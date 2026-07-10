@@ -1,8 +1,80 @@
-/* =====================================================
-   AL TAMKEEN Website
-   Homepage Styles
-====================================================== */
+/* ==========================================
+   AL TAMKEEN WEBSITE
+========================================== */
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
+:root{
+
+    --primary:#0F3D68;
+    --secondary:#2E7D32;
+    --gold:#D4AF37;
+    --light:#F8F9FA;
+
+}
+
+/* Service Cards */
+
+.s_card{
+
+    border-radius:18px !important;
+    overflow:hidden;
+    transition:all .35s ease;
+    border:none!important;
+
+}
+
+.s_card:hover{
+
+    transform:translateY(-10px) scale(1.02);
+
+    box-shadow:0 20px 45px rgba(15,61,104,.18)!important;
+
+}
+.s_card{
+
+    cursor:pointer;
+
+}
+
+.s_card img{
+
+    transition:.35s;
+
+}
+
+.s_card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.s_card img{
+
+    border-radius:18px 0 0 18px!important;
+
+}
+
+.s_card h5{
+
+    color:var(--primary);
+    font-weight:700;
+
+}
+
+.s_card p{
+
+    color:#666;
+
+}
+
+.btn-outline-primary{
+
+    border-radius:40px;
+
+}
+
+section{
+
+    padding-top:80px;
+    padding-bottom:80px;
+
 }

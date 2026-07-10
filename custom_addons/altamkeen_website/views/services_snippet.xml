@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="services_snippet" name="Services Snippet">
+
+        <section class="container py-5">
+
+            <h2 class="text-center">Our Services</h2>
+
+        </section>
+
+    </template>
+
+</odoo>

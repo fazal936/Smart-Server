@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="altamkeen_snippets"
+              inherit_id="web_editor.snippets"
+              name="AL TAMKEEN Snippets">
+
+        <xpath expr="//snippets[@id='snippet_structure']"
+               position="inside">
+
+            <t t-snippet="altamkeen_website.services_snippet"
+               string="AL TAMKEEN - Services"/>
+
+        </xpath>
+
+    </template>
+
+</odoo>

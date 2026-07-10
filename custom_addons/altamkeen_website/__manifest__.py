@@ -1,9 +1,10 @@
 {
     'name': 'AL TAMKEEN Website',
     'version': '1.0.0',
-    'summary': 'Custom website for AL TAMKEEN',
-    'author': 'SmartServe',
+
+    'summary': 'Corporate website customization for AL TAMKEEN',
     'category': 'Website',
+    'author': 'SmartServe',
     'license': 'LGPL-3',
 
     'depends': [
@@ -11,7 +12,8 @@
     ],
 
     'data': [
-        'views/homepage.xml',
+        'views/snippets.xml',
+        'views/services_snippet.xml',
     ],
 
     'assets': {
