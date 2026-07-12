@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="service_layout" name="AL TAMKEEN Service Layout">
+        <t t-call="website.layout">
+            <div id="wrap" class="alt-home alt-service-page">
+                <section class="alt-service-hero">
+                    <div class="container">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-7">
+                                <a href="/#services" class="alt-back-link">Back to services</a>
+                                <span class="alt-eyebrow" t-out="eyebrow"/>
+                                <h1 t-out="title"/>
+                                <p class="alt-lead" t-out="lead"/>
+                                <div class="alt-actions">
+                                    <a href="/contactus" class="btn alt-btn-primary">Request Consultation</a>
+                                    <a href="#requirements" class="btn alt-btn-light">View Requirements</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="alt-hero-panel">
+                                    <div class="alt-panel-header">
+                                        <span>Service note</span>
+                                        <strong>UAE rules apply</strong>
+                                    </div>
+                                    <p class="mt-3 mb-0">
+                                        Requirements, fees, processing times, and approvals can vary by emirate,
+                                        free zone, authority, activity type, nationality, and current UAE regulations.
+                                        Final requirements are confirmed during consultation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="alt-section">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-lg-5">
+                                <span class="alt-kicker">Scope</span>
+                                <h2>What this service includes</h2>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="alt-detail-list">
+                                    <t t-foreach="includes" t-as="item">
+                                        <div><i class="fa fa-check"></i><span t-out="item"/></div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="requirements" class="alt-docs">
+                    <div class="container">
+                        <div class="row g-4 align-items-start">
+                            <div class="col-lg-5">
+                                <span class="alt-kicker">Documents</span>
+                                <h2>Common starting documents</h2>
+                                <p>
+                                    This is a practical starting checklist. The final list may change after reviewing
+                                    your case and the relevant authority requirements.
+                                </p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="alt-doc-list">
+                                    <t t-foreach="documents" t-as="doc">
+                                        <span t-out="doc"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="alt-section">
+                    <div class="container">
+                        <div class="alt-section-head">
+                            <span>Process</span>
+                            <h2>How we support you</h2>
+                        </div>
+                        <div class="alt-process">
+                            <div><span>01</span><h3>Review</h3><p>We review your requirement, service type, documents, and authority path.</p></div>
+                            <div><span>02</span><h3>Checklist</h3><p>You receive a clear document checklist and next-step guidance.</p></div>
+                            <div><span>03</span><h3>Coordination</h3><p>We coordinate applications, forms, appointments, submissions, or follow-up as applicable.</p></div>
+                            <div><span>04</span><h3>Handover</h3><p>We update you until completion, approval, renewal, or final document collection.</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="alt-service-disclaimer">
+                    <div class="container">
+                        <p>
+                            Disclaimer: AL TAMKEEN provides corporate services coordination and administrative support.
+                            We do not present this page as legal advice. Government rules, authority procedures, fees,
+                            document requirements, and eligibility conditions may change. Official authority confirmation
+                            is required before submission.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="alt-final-cta">
+                    <div class="container">
+                        <div class="alt-cta-box">
+                            <div>
+                                <span>Need clarity?</span>
+                                <h2>Speak with our team before starting paperwork.</h2>
+                            </div>
+                            <a href="/contactus" class="btn alt-btn-primary">Get Guidance</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="service_business_setup" name="Business Setup Services">
+        <t t-set="eyebrow" t-value="'UAE business setup'"/>
+        <t t-set="title" t-value="'Business Setup Services'"/>
+        <t t-set="lead" t-value="'Guidance for mainland, free zone, and offshore business setup with trade licensing, initial approvals, and document coordination.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Business activity and jurisdiction guidance',
+                    'Mainland and free zone company formation coordination',
+                    'Trade name reservation and initial approval support',
+                    'Trade license issuance, renewal, and amendment support',
+                    'MOA, corporate document, and establishment coordination',
+                    'Investor visa and related government transaction support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copies',
+                    'Visa or entry stamp copy where applicable',
+                    'Emirates ID where applicable',
+                    'Proposed trade names',
+                    'Business activity details',
+                    'Shareholder details',
+                    'Office or tenancy details where required',
+                    'External approval documents if applicable'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_pro_services" name="PRO Services">
+        <t t-set="eyebrow" t-value="'Government transaction support'"/>
+        <t t-set="title" t-value="'PRO Services'"/>
+        <t t-set="lead" t-value="'Professional support for UAE government transactions, company documentation, immigration files, labour processes, renewals, and official follow-up.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Trade license applications, renewals, amendments, and cancellation coordination',
+                    'Company establishment card, immigration file, and government portal support',
+                    'Investor, partner, employment, dependent, and visit visa coordination',
+                    'Emirates ID, medical fitness, and residency follow-up',
+                    'Labour documentation, work permits, contracts, quota requests, and employee cancellation support',
+                    'Official letters, NOCs, resolutions, certified copies, and corporate record support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Emirates ID copy where applicable',
+                    'Residence visa copy where applicable',
+                    'Trade license copy',
+                    'Establishment card or immigration file details',
+                    'Passport-size photo where required',
+                    'Labour or employment contract documents where applicable',
+                    'Authority forms or previous approval copies'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_visa_services" name="Visa Services">
+        <t t-set="eyebrow" t-value="'Visa and immigration coordination'"/>
+        <t t-set="title" t-value="'UAE and International Visa Services'"/>
+        <t t-set="lead" t-value="'Document preparation and coordination for UAE visas, GCC travel, international visa applications, student support, and business mobility.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Investor, partner, employment, family, dependent, and visit visa support',
+                    'Entry permit, status change, residency stamping, renewal, and cancellation coordination',
+                    'Golden Visa, Green Visa, freelance visa, and remote work visa documentation support',
+                    'GCC and international visa application preparation',
+                    'Appointment scheduling, itinerary, insurance, invitation letter, and cover letter guidance',
+                    'Student, work, investor, and relocation documentation support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy with sufficient validity',
+                    'Photo as per authority or embassy specification',
+                    'Current visa or residence copy where applicable',
+                    'Emirates ID where applicable',
+                    'Bank statement or financial proof where required',
+                    'Employment, business, or sponsor documents',
+                    'Travel itinerary and hotel details where applicable',
+                    'Invitation letter or admission letter where applicable'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_document_attestation" name="Document Attestation Services">
+        <t t-set="eyebrow" t-value="'Attestation, legalization, translation'"/>
+        <t t-set="title" t-value="'Document Attestation and Legalization'"/>
+        <t t-set="lead" t-value="'Coordination support for educational, personal, and commercial document attestation, MOFA processes, embassy legalization, notary coordination, and legal translation.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Educational certificate attestation coordination',
+                    'Birth, marriage, police clearance, and personal document attestation support',
+                    'Commercial document, trade license, MOA, board resolution, and invoice attestation coordination',
+                    'MOFA, embassy, consulate, apostille, and legalization follow-up',
+                    'Certified translation and legal translation coordination',
+                    'Public notary, private notary, POA, affidavit, declaration, and certified copy coordination'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Original document or clear copy depending on authority requirement',
+                    'Passport copy',
+                    'Emirates ID or visa copy where applicable',
+                    'Previous attestations or stamps if any',
+                    'Company documents for commercial attestation',
+                    'Authorization letter or POA where required',
+                    'Translation copy where applicable',
+                    'Embassy or MOFA reference documents if already available'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_real_estate_investment" name="Real Estate and Investment Services">
+        <t t-set="eyebrow" t-value="'Property, investment, and documentation'"/>
+        <t t-set="title" t-value="'Real Estate and Investment Services'"/>
+        <t t-set="lead" t-value="'Practical coordination for UAE property search, sales and purchase support, leasing, investment planning, mortgage documentation, and property-related paperwork.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Residential and commercial property consultation coordination',
+                    'Property buying, selling, reservation, and transfer document support',
+                    'Off-plan and ready property guidance coordination',
+                    'Lease, tenancy, title deed, and handover documentation support',
+                    'Mortgage and finance documentation coordination',
+                    'Property management, rent, inspection, and maintenance coordination support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Emirates ID or visa copy where applicable',
+                    'Proof of address where required',
+                    'Property details or title deed where available',
+                    'Sale and purchase agreement or reservation form where applicable',
+                    'Tenancy contract or lease agreement where applicable',
+                    'Bank or mortgage documents where applicable',
+                    'Power of Attorney or authorization letter where required'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_business_advisory" name="Business Advisory Services">
+        <t t-set="eyebrow" t-value="'Corporate growth and advisory support'"/>
+        <t t-set="title" t-value="'Business Advisory Services'"/>
+        <t t-set="lead" t-value="'Support for market entry, business planning, corporate structuring, investment documentation, restructuring, franchise planning, and SME growth coordination.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Business planning, market entry, and expansion advisory coordination',
+                    'Corporate structuring, governance, and risk management support',
+                    'Startup and SME planning, licensing guidance, and growth strategy support',
+                    'Investment proposal, business valuation, and due diligence documentation coordination',
+                    'Franchise documentation and expansion planning support',
+                    'Business restructuring, continuity planning, acquisition, sale, or merger documentation coordination'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Company profile or business summary',
+                    'Trade license copy where applicable',
+                    'Shareholder and manager details',
+                    'Passport and Emirates ID copies where applicable',
+                    'Existing corporate documents where available',
+                    'Financial summaries or business plan where applicable',
+                    'Investment, franchise, or expansion proposal where applicable',
+                    'Any existing agreements or authority documents related to the request'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_hr_consultancy" name="HR Consultancy Services">
+        <t t-set="eyebrow" t-value="'Employee documentation and labour support'"/>
+        <t t-set="title" t-value="'HR Consultancy Services'"/>
+        <t t-set="lead" t-value="'Support for employee documentation, onboarding coordination, labour process guidance, HR policies, payroll coordination, compliance, and recruitment-related paperwork.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Employee onboarding document checklist and coordination',
+                    'Labour contract, offer letter, and employment file support',
+                    'HR policy, employee handbook, and internal process guidance',
+                    'Payroll, leave, end-of-service, and employee records coordination',
+                    'Recruitment documentation and candidate onboarding support',
+                    'MOHRE, free zone, and authority labour procedure follow-up where applicable'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Emirates ID or visa copy where applicable',
+                    'Educational or professional certificates where required',
+                    'Employment offer letter or contract draft',
+                    'Company trade license and establishment card where applicable',
+                    'Existing employee records or HR policy documents where available',
+                    'Salary, designation, and joining details',
+                    'Authority forms or reference numbers where already available'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_global_immigration" name="Global Immigration Services">
+        <t t-set="eyebrow" t-value="'Residency, mobility, and relocation'"/>
+        <t t-set="title" t-value="'Global Immigration Services'"/>
+        <t t-set="lead" t-value="'Documentation guidance for residency, investor mobility, student and work visa files, family relocation, and international immigration support.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Residency and long-term residence documentation support',
+                    'Investor, entrepreneur, and business mobility guidance',
+                    'Student visa, work visa, and family relocation document coordination',
+                    'Application form, checklist, appointment, and status follow-up support',
+                    'Translation, attestation, itinerary, insurance, and financial document coordination',
+                    'Corporate and family visa management guidance'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Photograph where required',
+                    'Current visa or Emirates ID where applicable',
+                    'Educational, employment, or business documents where required',
+                    'Bank statement or financial proof where applicable',
+                    'Travel itinerary or invitation letter where applicable',
+                    'Marriage, birth, or family documents for dependents',
+                    'Previous visa history or refusal letters where applicable'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_travel_tourism" name="Travel and Tourism Services">
+        <t t-set="eyebrow" t-value="'Flights, hotels, tours, and religious travel'"/>
+        <t t-set="title" t-value="'Travel and Tourism Services'"/>
+        <t t-set="lead" t-value="'Travel coordination for flight bookings, hotels, holiday packages, business travel, group travel, Umrah guidance, and international itinerary support.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Domestic and international flight booking coordination',
+                    'Hotel, resort, serviced apartment, and holiday accommodation support',
+                    'Holiday, business, family, group, and educational tour package coordination',
+                    'Umrah package and religious travel documentation guidance',
+                    'Travel insurance, itinerary, reservation, and invitation letter coordination',
+                    'Corporate, VIP, student, and group travel support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Travel dates and destination details',
+                    'Passenger names and contact information',
+                    'Visa copy or residency details where applicable',
+                    'Hotel or accommodation preference',
+                    'Travel insurance requirement where applicable',
+                    'Invitation or event documents for business travel',
+                    'Special assistance or group requirements'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_insurance_services" name="Insurance Services">
+        <t t-set="eyebrow" t-value="'Personal, business, travel, and property coverage'"/>
+        <t t-set="title" t-value="'Insurance Services'"/>
+        <t t-set="lead" t-value="'Coordination support for motor, health, life, travel, property, business, marine, cargo, and specialty insurance requirements.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'Motor, health, life, and travel insurance coordination',
+                    'Property, land, real estate, and business insurance guidance',
+                    'Marine, cargo, aviation, engineering, and construction insurance coordination',
+                    'Professional and specialty insurance support',
+                    'Policy renewal, policy management, and claims assistance coordination',
+                    'International insurance solution guidance where applicable'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport or Emirates ID copy',
+                    'Vehicle registration card for motor insurance',
+                    'Trade license for business insurance where applicable',
+                    'Property or asset documents where applicable',
+                    'Existing policy copy if renewing or comparing',
+                    'Claim documents where applicable',
+                    'Travel dates for travel insurance',
+                    'Coverage requirement and beneficiary details where applicable'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+
+    <template id="service_driving_vehicle_services" name="Driving and Vehicle Services">
+        <t t-set="eyebrow" t-value="'Driving licence, RTA, and vehicle documentation'"/>
+        <t t-set="title" t-value="'Driving and Vehicle Services'"/>
+        <t t-set="lead" t-value="'Support for UAE driving licence coordination, international driving permits, RTA documentation, traffic file services, and vehicle registration processes.'"/>
+        <t t-set="includes"
+           t-value="[
+                    'New UAE driving licence and first-time driving file guidance',
+                    'International driving permit coordination',
+                    'Traffic file opening, transfer, and driver record request support',
+                    'Traffic fine, black point, and driver status inquiry guidance',
+                    'Vehicle registration, renewal, ownership transfer, and inspection coordination',
+                    'Vehicle export, import, number plate, and deregistration documentation support'
+                ]"/>
+        <t t-set="documents"
+           t-value="[
+                    'Passport copy',
+                    'Emirates ID copy',
+                    'UAE visa copy where applicable',
+                    'Existing driving licence where applicable',
+                    'Eye test or medical documents where required',
+                    'Vehicle registration card where applicable',
+                    'Insurance policy or inspection report where applicable',
+                    'Traffic file or RTA reference number where available'
+                ]"/>
+        <t t-call="altamkeen_website.service_layout"/>
+    </template>
+</odoo>

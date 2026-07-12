@@ -12,8 +12,12 @@
     ],
 
     'data': [
-        'views/snippets.xml',
+        'views/homepage.xml',
+        'views/service_pages.xml',
+        'views/menu.xml',
+        'views/footer.xml',
         'views/services_snippet.xml',
+        'views/snippets.xml',
     ],
 
     'assets': {

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="menu_services" model="website.menu">
+        <field name="name">Services</field>
+        <field name="url">#</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+    <record id="menu_about" model="website.menu">
+        <field name="name">About</field>
+        <field name="url">/#about</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">30</field>
+    </record>
+
+    <record id="menu_why_choose_us" model="website.menu">
+        <field name="name">Why Choose Us</field>
+        <field name="url">/#why</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">40</field>
+    </record>
+
+    <record id="website.menu_contactus" model="website.menu">
+        <field name="url">/#contact</field>
+        <field name="sequence" type="int">50</field>
+    </record>
+
+    <record id="menu_service_business_setup" model="website.menu">
+        <field name="name">Business Setup</field>
+        <field name="url">/services/business-setup</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">10</field>
+    </record>
+
+    <record id="menu_service_pro_services" model="website.menu">
+        <field name="name">PRO Services</field>
+        <field name="url">/services/pro-services</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+    <record id="menu_service_visa_services" model="website.menu">
+        <field name="name">Visa Services</field>
+        <field name="url">/services/visa-services</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">30</field>
+    </record>
+
+    <record id="menu_service_attestation" model="website.menu">
+        <field name="name">Legal &amp; Attestation</field>
+        <field name="url">/services/document-attestation</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">40</field>
+    </record>
+
+    <record id="menu_service_real_estate" model="website.menu">
+        <field name="name">Real Estate &amp; Investment</field>
+        <field name="url">/services/real-estate-investment</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">50</field>
+    </record>
+
+    <record id="menu_service_business_advisory" model="website.menu">
+        <field name="name">Business Advisory</field>
+        <field name="url">/services/business-advisory</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">60</field>
+    </record>
+
+    <record id="menu_service_global_immigration" model="website.menu">
+        <field name="name">Global Immigration</field>
+        <field name="url">/services/global-immigration</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">70</field>
+    </record>
+
+    <record id="menu_service_travel_tourism" model="website.menu">
+        <field name="name">Travel &amp; Tourism</field>
+        <field name="url">/services/travel-tourism</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+
+    <record id="menu_service_insurance" model="website.menu">
+        <field name="name">Insurance Services</field>
+        <field name="url">/services/insurance-services</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+
+    <record id="menu_service_driving_vehicle" model="website.menu">
+        <field name="name">Driving &amp; Vehicle Services</field>
+        <field name="url">/services/driving-vehicle-services</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">100</field>
+    </record>
+
+    <record id="menu_service_hr_consultancy" model="website.menu">
+        <field name="name">HR Consultancy</field>
+        <field name="url">/services/hr-consultancy</field>
+        <field name="parent_id" ref="altamkeen_website.menu_services"/>
+        <field name="sequence" type="int">110</field>
+    </record>
+</odoo>

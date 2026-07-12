@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="altamkeen_footer" inherit_id="website.layout" name="AL TAMKEEN Footer" priority="80">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="alt-footer" t-if="not no_footer">
+                <section class="pt40 pb32">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-lg-3">
+                                <h5>Useful Links</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/#services">Services</a></li>
+                                    <li><a href="/#about">About</a></li>
+                                    <li><a href="/#why">Why Choose Us</a></li>
+                                    <li><a href="/#contact">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-5">
+                                <h5>About AL TAMKEEN</h5>
+                                <p>
+                                    AL TAMKEEN CORPORATE SERVICES DWC LLC supports businesses, investors,
+                                    entrepreneurs, and individuals with UAE company setup, PRO services, visas,
+                                    document coordination, travel, legal support, and corporate advisory.
+                                </p>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>Connect With Us</h5>
+                                <ul class="list-unstyled alt-footer-contact">
+                                    <li><i class="fa fa-phone fa-fw me-2"></i><a href="tel:+971551545947">+971 55 154 5947</a></li>
+                                    <li><i class="fa fa-phone fa-fw me-2"></i><a href="tel:+971508388134">+971 50 838 8134</a></li>
+                                    <li><i class="fa fa-whatsapp fa-fw me-2"></i><a href="https://wa.me/971551545947">WhatsApp support</a></li>
+                                    <li><i class="fa fa-envelope fa-fw me-2"></i><a href="mailto:info@altamkeen.ae">info@altamkeen.ae</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">
+            <span class="o_footer_copyright_name me-2">Copyright © AL TAMKEEN CORPORATE SERVICES DWC LLC</span>
+        </xpath>
+    </template>
+</odoo>
