@@ -1,6 +1,6 @@
 # SmartServe
 
-## Digital Corporate Services Management Platform
+## Client Document Collection System
 
 ### Version
 v1.0.0
@@ -21,12 +21,16 @@ Fazal Subhan
 ### Modules
 
 - Website
-- CRM
-- Customer Portal
-- Application Management
-- Document Upload
-- Notifications
-- Reports
+- Staff Document Requests
+- Secure Upload Links
+- Required Document Tracking
+- Staff Document Review
+- Activity Timeline
+
+### Direction
+
+SmartServe is an internal staff workflow for collecting customer documents through secure upload links.
+Customers do not have accounts, logins, dashboards, profiles, or self-service portal access.
 
 ### Status
 

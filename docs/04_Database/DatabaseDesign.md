@@ -1,82 +1,173 @@
-# SmartServe Platform Database Design
+# SmartServe Document Collection Database Design
 
-## Service Category
+## Customer
 
-- Business Setup
-- PRO Services
-- UAE Visa Services
-- International Visa Services
-- Travel & Tourism
-- Legal Services
-- HR Consultancy
-- Insurance
-- Driving Licence Services
-- Document Attestation
-- Real Estate
-- Corporate Advisory
-
----
-
-## Service
-
-Fields
-
-- Service Name
-- Category
-- Description
-- Required Documents
-- Estimated Processing Time
-- Status (Active/Inactive)
-
----
-
-## Application
-
-Fields
-
-- Reference Number
-- Customer Name
+- Name
+- Company
 - Mobile
 - Email
-- Service
-- Status
-- Assigned Employee
-- Date Created
+- Emirates ID
+- Passport
+- Notes
+- Multiple Requests
+
+Customers do not log in and are not Odoo portal users.
 
 ---
 
-## Documents
+## Service Template
 
-Fields
+- Service Name
+- WhatsApp Template
+- Due Days
+- Folder Naming Rules
+- Upload Rules
+- Required Document Templates
 
-- Application
-- Document Type
-- File
-- Uploaded By
-- Upload Date
+Example templates:
+
+- Trade License Renewal
+- Visa Renewal
+- VAT Registration
+- Corporate Tax
+- Medical License
+- Employee Onboarding
+
+---
+
+## Document Request
+
+- Reference Number
+- Request Title
+- Customer
+- Service Template
+- Status
+- Due Date
+- Assigned Staff
+- Secure Upload Token
+- Upload Expiry
+- Revoked Flag
+- Allow Multiple Uploads
+- SharePoint Folder ID
+- SharePoint Folder URL
+- Communication Status
+- Internal Notes
+- Timeline
+
+---
+
+## Required Document
+
+- Request
+- Name
+- Description
+- Required or Optional
+- Allowed Extensions
+- Maximum Size
+- Upload Status
+- Review Status
+- SharePoint File ID
+- SharePoint File URL
+
+---
+
+## Uploaded Document Metadata
+
+SmartServe stores metadata only. Actual files remain in the configured storage provider.
+
+- Request
+- Required Document
+- Storage Provider
+- Storage File ID
+- Storage URL
+- Filename
+- MIME Type
+- File Size
+- Uploaded Date
+- Review Status
+- Staff Notes
+
+---
+
+## Upload Attempt
+
+- Request
+- Token Hash
+- IP Address
+- User Agent
+- Result
+- Summary
+- Created Date
+
+Used for rate limiting and audit logging.
+
+---
+
+## Activity Timeline
+
+- Request
+- Activity Type
+- Summary
+- Created Date
+
+Every important event should create an audit record.
 
 ---
 
 ## Workflow
 
-New
+Create Customer
 
-↓
+->
 
-Documents Pending
+Create Request
 
-↓
+->
 
-Documents Received
+Select Service Template
 
-↓
+->
 
-Processing
+Generate Request
 
-↓
+->
 
-Government Processing
+Create SharePoint Folder
 
-↓
+->
 
-Completed
+Generate Secure Upload Token
+
+->
+
+Send WhatsApp Link
+
+->
+
+Customer Uploads Documents
+
+->
+
+Store Metadata
+
+->
+
+Staff Review
+
+->
+
+Approve / Reject / Request More Documents
+
+->
+
+Complete Request
+
+---
+
+## Explicitly Not Included
+
+- Customer user accounts
+- Customer passwords
+- Customer login
+- Customer dashboard
+- Customer portal document management
