@@ -103,8 +103,7 @@
                         <div class="row g-4">
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/business-setup">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-business-setup.jpg" alt="Business setup services"/>
-                                    <i class="fa fa-briefcase"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-business-setup.png" alt="Business setup consultation in Dubai"/>
                                     <h3>Business Setup</h3>
                                     <p>Mainland, free zone, and offshore company formation guidance with licensing and approval support.</p>
                                     <a class="alt-learn-more" href="/services/business-setup">Learn More</a>
@@ -112,8 +111,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/pro-services">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-pro.jpg" alt="PRO services"/>
-                                    <i class="fa fa-id-card-o"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-pro-services-v2.png" alt="PRO services government transaction documents"/>
                                     <h3>PRO Services</h3>
                                     <p>Government transactions, renewals, typing, attestations, and document coordination handled professionally.</p>
                                     <a class="alt-learn-more" href="/services/pro-services">Learn More</a>
@@ -121,8 +119,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/visa-services">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-visa.jpg" alt="Visa services"/>
-                                    <i class="fa fa-plane"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-visa-travel.png" alt="Visa and travel consultation"/>
                                     <h3>Visa Services</h3>
                                     <p>UAE visa, investor visa, employment visa, family visa, and international visa assistance.</p>
                                     <a class="alt-learn-more" href="/services/visa-services">Learn More</a>
@@ -130,8 +127,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/document-attestation">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-legal.jpg" alt="Legal and attestation services"/>
-                                    <i class="fa fa-gavel"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-attestation.png" alt="Document attestation services"/>
                                     <h3>Legal and Attestation</h3>
                                     <p>Document attestation, legal translation coordination, contracts, and corporate paperwork support.</p>
                                     <a class="alt-learn-more" href="/services/document-attestation">Learn More</a>
@@ -139,8 +135,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/real-estate-investment">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-real-estate.jpg" alt="Real estate and investment services"/>
-                                    <i class="fa fa-home"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-real-estate.png" alt="Real estate investment consultation"/>
                                     <h3>Real Estate and Investment</h3>
                                     <p>Property sales, leasing, investment planning, mortgage documentation, and UAE market guidance.</p>
                                     <a class="alt-learn-more" href="/services/real-estate-investment">Learn More</a>
@@ -148,8 +143,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/business-advisory">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-corporate.jpg" alt="Corporate advisory services"/>
-                                    <i class="fa fa-line-chart"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-corporate-advisory.png" alt="Corporate strategy and business advisory"/>
                                     <h3>Corporate Advisory</h3>
                                     <p>Practical support for compliance, renewals, market entry, and long-term operational planning.</p>
                                     <a class="alt-learn-more" href="/services/business-advisory">Learn More</a>
@@ -157,8 +151,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/global-immigration">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-visa.jpg" alt="Global immigration services"/>
-                                    <i class="fa fa-globe"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-global-immigration.png" alt="Global immigration and international visa services"/>
                                     <h3>Global Immigration</h3>
                                     <p>Residency, investor mobility, relocation, student, work, and citizenship documentation guidance.</p>
                                     <a class="alt-learn-more" href="/services/global-immigration">Learn More</a>
@@ -166,8 +159,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/travel-tourism">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-visa.jpg" alt="Travel and tourism services"/>
-                                    <i class="fa fa-suitcase"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-visa-travel.png" alt="Travel and tourism services"/>
                                     <h3>Travel and Tourism</h3>
                                     <p>Flight bookings, holiday packages, hotels, Umrah support, business travel, and group travel coordination.</p>
                                     <a class="alt-learn-more" href="/services/travel-tourism">Learn More</a>
@@ -175,8 +167,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/insurance-services">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-corporate.jpg" alt="Insurance services"/>
-                                    <i class="fa fa-shield"></i>
+                                    <img class="alt-service-image alt-service-image--contain" src="/altamkeen_website/static/src/img/photo-insurance-services.png" alt="Comprehensive insurance services"/>
                                     <h3>Insurance Services</h3>
                                     <p>Motor, health, life, travel, property, business, marine, cargo, and specialty insurance support.</p>
                                     <a class="alt-learn-more" href="/services/insurance-services">Learn More</a>
@@ -184,8 +175,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/driving-vehicle-services">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-pro.jpg" alt="Driving and vehicle services"/>
-                                    <i class="fa fa-car"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-driving-vehicle.png" alt="Driving licence and vehicle services"/>
                                     <h3>Driving and Vehicle Services</h3>
                                     <p>Driving licence, international driving permit, RTA, traffic file, vehicle registration and transfer coordination.</p>
                                     <a class="alt-learn-more" href="/services/driving-vehicle-services">Learn More</a>
@@ -193,8 +183,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/real-estate-investment">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-real-estate.jpg" alt="Real estate and investment services"/>
-                                    <i class="fa fa-home"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-real-estate.png" alt="Real estate and investment services"/>
                                     <h3>Real Estate and Investment</h3>
                                     <p>Property sales, leasing, investment planning, mortgage documentation, and corporate growth advisory.</p>
                                     <a class="alt-learn-more" href="/services/real-estate-investment">Learn More</a>
@@ -202,8 +191,7 @@
                             </div>
                             <div class="col-md-6 col-xl-4">
                                 <article class="alt-service-card" data-url="/services/hr-consultancy">
-                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-corporate.jpg" alt="HR and recruitment services"/>
-                                    <i class="fa fa-handshake-o"></i>
+                                    <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-hr-recruitment.png" alt="HR and recruitment services"/>
                                     <h3>HR and Recruitment</h3>
                                     <p>HR consulting, recruitment, performance, training, payroll, compliance, employee relations, and outsourcing.</p>
                                     <a class="alt-learn-more" href="/services/hr-consultancy">Learn More</a>

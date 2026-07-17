@@ -415,6 +415,11 @@ header#top .navbar .nav-link.active::after {
     background: var(--alt-soft);
 }
 
+.alt-service-image--contain {
+    object-fit: contain;
+    background: #f7fafc;
+}
+
 .alt-service-card i {
     width: 52px;
     height: 52px;
@@ -467,29 +472,114 @@ header#top .navbar .nav-link.active::after {
     border-color: var(--alt-green);
 }
 
+.alt-service-nav {
+    position: relative;
+    z-index: 2;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--alt-line);
+    background: var(--alt-white);
+}
+
+.alt-service-nav-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 1px 0 7px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(19, 95, 155, 0.28) transparent;
+}
+
+.alt-service-nav-track a {
+    flex: 0 0 auto;
+    padding: 10px 18px;
+    border: 1px solid rgba(19, 95, 155, 0.34);
+    border-radius: 999px;
+    color: var(--alt-navy);
+    background: var(--alt-white);
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.alt-service-nav-track a:hover,
+.alt-service-nav-track a.active {
+    color: var(--alt-white);
+    border-color: var(--alt-green);
+    background: var(--alt-green);
+}
+
 .alt-service-hero {
-    padding: 96px 0 76px;
-    background: var(--alt-navy);
+    padding: 72px 0 78px;
+    background:
+        radial-gradient(circle at 15% 12%, rgba(47, 125, 87, 0.11), transparent 35%),
+        linear-gradient(135deg, #f5fbfa 0%, #ffffff 62%, #f7f5ef 100%);
 }
 
 .alt-service-hero h1 {
-    color: var(--alt-white);
-    max-width: 780px;
-    font-size: clamp(42px, 6vw, 72px);
-    line-height: 1;
-    margin: 16px 0 22px;
+    max-width: 680px;
+    margin: 14px 0 18px;
+    color: var(--alt-navy);
+    font-size: clamp(40px, 4.8vw, 64px);
+    line-height: 1.02;
 }
 
-.alt-back-link {
-    display: inline-flex;
-    margin-bottom: 22px;
-    color: rgba(255, 255, 255, 0.78);
-    font-weight: 800;
-    text-decoration: none;
+.alt-service-hero .alt-lead {
+    max-width: 680px;
+    padding: 0;
+    border: 0;
+    color: var(--alt-muted) !important;
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    backdrop-filter: none;
 }
 
-.alt-back-link:hover {
-    color: var(--alt-gold);
+.alt-service-hero .alt-btn-light {
+    color: var(--alt-navy) !important;
+    border-color: rgba(11, 45, 77, 0.22);
+    background: var(--alt-white);
+}
+
+.alt-service-hero .alt-btn-light:hover {
+    color: var(--alt-white) !important;
+    border-color: var(--alt-navy);
+    background: var(--alt-navy);
+}
+
+.alt-service-hero-image {
+    width: 100%;
+    min-height: 500px;
+    max-height: 610px;
+    display: block;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(11, 45, 77, 0.16);
+}
+
+.alt-service-hero-image--contain {
+    object-fit: contain;
+    background: var(--alt-white);
+}
+
+.alt-hero-includes {
+    display: grid;
+    gap: 9px;
+    margin-top: 24px;
+}
+
+.alt-hero-includes div {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--alt-muted);
+    line-height: 1.45;
+}
+
+.alt-hero-includes i {
+    flex: 0 0 auto;
+    margin-top: 3px;
+    color: var(--alt-green);
 }
 
 .alt-detail-list {
@@ -1023,6 +1113,11 @@ header#top .dropdown-item:focus {
     .alt-form-grid {
         grid-template-columns: 1fr;
     }
+
+    .alt-service-hero-image {
+        min-height: 420px;
+        max-height: 520px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -1032,6 +1127,29 @@ header#top .dropdown-item:focus {
 
     .alt-lead {
         font-size: 17px;
+    }
+
+    .alt-service-nav {
+        padding: 9px 0;
+    }
+
+    .alt-service-nav-track a {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .alt-service-hero {
+        padding: 50px 0 58px;
+    }
+
+    .alt-service-hero h1 {
+        font-size: 40px;
+    }
+
+    .alt-service-hero-image {
+        min-height: 300px;
+        max-height: 380px;
+        border-radius: 16px;
     }
 
     .alt-proof-row,

@@ -3,49 +3,42 @@
     <template id="service_layout" name="AL TAMKEEN Service Layout">
         <t t-call="website.layout">
             <div id="wrap" class="alt-home alt-service-page">
+                <nav class="alt-service-nav" aria-label="Our services">
+                    <div class="container">
+                        <div class="alt-service-nav-track">
+                            <a href="/services/business-setup" t-att-class="'active' if service_slug == 'business-setup' else ''">Business Setup</a>
+                            <a href="/services/pro-services" t-att-class="'active' if service_slug == 'pro-services' else ''">PRO Services</a>
+                            <a href="/services/visa-services" t-att-class="'active' if service_slug == 'visa-services' else ''">Visa Services</a>
+                            <a href="/services/document-attestation" t-att-class="'active' if service_slug == 'document-attestation' else ''">Attestation</a>
+                            <a href="/services/real-estate-investment" t-att-class="'active' if service_slug == 'real-estate-investment' else ''">Real Estate</a>
+                            <a href="/services/business-advisory" t-att-class="'active' if service_slug == 'business-advisory' else ''">Business Advisory</a>
+                            <a href="/services/hr-consultancy" t-att-class="'active' if service_slug == 'hr-consultancy' else ''">HR Consultancy</a>
+                            <a href="/services/global-immigration" t-att-class="'active' if service_slug == 'global-immigration' else ''">Immigration</a>
+                            <a href="/services/travel-tourism" t-att-class="'active' if service_slug == 'travel-tourism' else ''">Travel &amp; Tourism</a>
+                            <a href="/services/insurance-services" t-att-class="'active' if service_slug == 'insurance-services' else ''">Insurance</a>
+                            <a href="/services/driving-vehicle-services" t-att-class="'active' if service_slug == 'driving-vehicle-services' else ''">Driving &amp; Vehicle</a>
+                        </div>
+                    </div>
+                </nav>
                 <section class="alt-service-hero">
                     <div class="container">
                         <div class="row g-5 align-items-center">
-                            <div class="col-lg-7">
-                                <a href="/#services" class="alt-back-link">Back to services</a>
+                            <div class="col-lg-6">
                                 <span class="alt-eyebrow" t-out="eyebrow"/>
                                 <h1 t-out="title"/>
                                 <p class="alt-lead" t-out="lead"/>
+                                <div class="alt-hero-includes">
+                                    <t t-foreach="includes" t-as="item">
+                                        <div><i class="fa fa-check" aria-hidden="true"></i><span t-out="item"/></div>
+                                    </t>
+                                </div>
                                 <div class="alt-actions">
                                     <a href="/contactus" class="btn alt-btn-primary">Request Consultation</a>
                                     <a href="#requirements" class="btn alt-btn-light">View Requirements</a>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
-                                <div class="alt-hero-panel">
-                                    <div class="alt-panel-header">
-                                        <span>Service note</span>
-                                        <strong>UAE rules apply</strong>
-                                    </div>
-                                    <p class="mt-3 mb-0">
-                                        Requirements, fees, processing times, and approvals can vary by emirate,
-                                        free zone, authority, activity type, nationality, and current UAE regulations.
-                                        Final requirements are confirmed during consultation.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="alt-section">
-                    <div class="container">
-                        <div class="row g-4">
-                            <div class="col-lg-5">
-                                <span class="alt-kicker">Scope</span>
-                                <h2>What this service includes</h2>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="alt-detail-list">
-                                    <t t-foreach="includes" t-as="item">
-                                        <div><i class="fa fa-check"></i><span t-out="item"/></div>
-                                    </t>
-                                </div>
+                            <div class="col-lg-6">
+                                <img t-attf-class="alt-service-hero-image #{'alt-service-hero-image--contain' if service_slug == 'insurance-services' else ''}" t-att-src="hero_image" t-att-alt="title"/>
                             </div>
                         </div>
                     </div>
@@ -115,6 +108,8 @@
     </template>
 
     <template id="service_business_setup" name="Business Setup Services">
+        <t t-set="service_slug" t-value="'business-setup'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-business-setup.png'"/>
         <t t-set="eyebrow" t-value="'UAE business setup'"/>
         <t t-set="title" t-value="'Business Setup Services'"/>
         <t t-set="lead" t-value="'Guidance for mainland, free zone, and offshore business setup with trade licensing, initial approvals, and document coordination.'"/>
@@ -142,6 +137,8 @@
     </template>
 
     <template id="service_pro_services" name="PRO Services">
+        <t t-set="service_slug" t-value="'pro-services'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-pro-services-v2.png'"/>
         <t t-set="eyebrow" t-value="'Government transaction support'"/>
         <t t-set="title" t-value="'PRO Services'"/>
         <t t-set="lead" t-value="'Professional support for UAE government transactions, company documentation, immigration files, labour processes, renewals, and official follow-up.'"/>
@@ -169,6 +166,8 @@
     </template>
 
     <template id="service_visa_services" name="Visa Services">
+        <t t-set="service_slug" t-value="'visa-services'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-visa-travel.png'"/>
         <t t-set="eyebrow" t-value="'Visa and immigration coordination'"/>
         <t t-set="title" t-value="'UAE and International Visa Services'"/>
         <t t-set="lead" t-value="'Document preparation and coordination for UAE visas, GCC travel, international visa applications, student support, and business mobility.'"/>
@@ -196,6 +195,8 @@
     </template>
 
     <template id="service_document_attestation" name="Document Attestation Services">
+        <t t-set="service_slug" t-value="'document-attestation'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-attestation.png'"/>
         <t t-set="eyebrow" t-value="'Attestation, legalization, translation'"/>
         <t t-set="title" t-value="'Document Attestation and Legalization'"/>
         <t t-set="lead" t-value="'Coordination support for educational, personal, and commercial document attestation, MOFA processes, embassy legalization, notary coordination, and legal translation.'"/>
@@ -223,6 +224,8 @@
     </template>
 
     <template id="service_real_estate_investment" name="Real Estate and Investment Services">
+        <t t-set="service_slug" t-value="'real-estate-investment'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-real-estate.png'"/>
         <t t-set="eyebrow" t-value="'Property, investment, and documentation'"/>
         <t t-set="title" t-value="'Real Estate and Investment Services'"/>
         <t t-set="lead" t-value="'Practical coordination for UAE property search, sales and purchase support, leasing, investment planning, mortgage documentation, and property-related paperwork.'"/>
@@ -250,6 +253,8 @@
     </template>
 
     <template id="service_business_advisory" name="Business Advisory Services">
+        <t t-set="service_slug" t-value="'business-advisory'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-corporate-advisory.png'"/>
         <t t-set="eyebrow" t-value="'Corporate growth and advisory support'"/>
         <t t-set="title" t-value="'Business Advisory Services'"/>
         <t t-set="lead" t-value="'Support for market entry, business planning, corporate structuring, investment documentation, restructuring, franchise planning, and SME growth coordination.'"/>
@@ -277,6 +282,8 @@
     </template>
 
     <template id="service_hr_consultancy" name="HR Consultancy Services">
+        <t t-set="service_slug" t-value="'hr-consultancy'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-hr-recruitment.png'"/>
         <t t-set="eyebrow" t-value="'Employee documentation and labour support'"/>
         <t t-set="title" t-value="'HR Consultancy Services'"/>
         <t t-set="lead" t-value="'Support for employee documentation, onboarding coordination, labour process guidance, HR policies, payroll coordination, compliance, and recruitment-related paperwork.'"/>
@@ -304,6 +311,8 @@
     </template>
 
     <template id="service_global_immigration" name="Global Immigration Services">
+        <t t-set="service_slug" t-value="'global-immigration'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-global-immigration.png'"/>
         <t t-set="eyebrow" t-value="'Residency, mobility, and relocation'"/>
         <t t-set="title" t-value="'Global Immigration Services'"/>
         <t t-set="lead" t-value="'Documentation guidance for residency, investor mobility, student and work visa files, family relocation, and international immigration support.'"/>
@@ -331,6 +340,8 @@
     </template>
 
     <template id="service_travel_tourism" name="Travel and Tourism Services">
+        <t t-set="service_slug" t-value="'travel-tourism'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-visa-travel.png'"/>
         <t t-set="eyebrow" t-value="'Flights, hotels, tours, and religious travel'"/>
         <t t-set="title" t-value="'Travel and Tourism Services'"/>
         <t t-set="lead" t-value="'Travel coordination for flight bookings, hotels, holiday packages, business travel, group travel, Umrah guidance, and international itinerary support.'"/>
@@ -358,6 +369,8 @@
     </template>
 
     <template id="service_insurance_services" name="Insurance Services">
+        <t t-set="service_slug" t-value="'insurance-services'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-insurance-services.png'"/>
         <t t-set="eyebrow" t-value="'Personal, business, travel, and property coverage'"/>
         <t t-set="title" t-value="'Insurance Services'"/>
         <t t-set="lead" t-value="'Coordination support for motor, health, life, travel, property, business, marine, cargo, and specialty insurance requirements.'"/>
@@ -385,6 +398,8 @@
     </template>
 
     <template id="service_driving_vehicle_services" name="Driving and Vehicle Services">
+        <t t-set="service_slug" t-value="'driving-vehicle-services'"/>
+        <t t-set="hero_image" t-value="'/altamkeen_website/static/src/img/photo-driving-vehicle.png'"/>
         <t t-set="eyebrow" t-value="'Driving licence, RTA, and vehicle documentation'"/>
         <t t-set="title" t-value="'Driving and Vehicle Services'"/>
         <t t-set="lead" t-value="'Support for UAE driving licence coordination, international driving permits, RTA documentation, traffic file services, and vehicle registration processes.'"/>

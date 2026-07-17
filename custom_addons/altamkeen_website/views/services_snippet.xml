@@ -13,8 +13,7 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/business-setup">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-business-setup.jpg" alt="Business setup services"/>
-                            <i class="fa fa-briefcase"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-business-setup.png" alt="Business setup consultation in Dubai"/>
                             <h3>Business Setup</h3>
                             <p>Mainland, free zone, and offshore formation support.</p>
                             <a class="alt-learn-more" href="/services/business-setup">Learn More</a>
@@ -22,8 +21,7 @@
                     </div>
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/pro-services">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-pro.jpg" alt="PRO services"/>
-                            <i class="fa fa-id-card-o"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-pro-services-v2.png" alt="PRO services government transaction documents"/>
                             <h3>PRO Services</h3>
                             <p>Government typing, renewals, documents, and approvals.</p>
                             <a class="alt-learn-more" href="/services/pro-services">Learn More</a>
@@ -31,8 +29,7 @@
                     </div>
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/visa-services">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-visa.jpg" alt="Visa services"/>
-                            <i class="fa fa-plane"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-visa-travel.png" alt="Visa and travel consultation"/>
                             <h3>Visa Services</h3>
                             <p>Investor, employment, family, and travel visa assistance.</p>
                             <a class="alt-learn-more" href="/services/visa-services">Learn More</a>
@@ -40,8 +37,7 @@
                     </div>
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/document-attestation">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-legal.jpg" alt="Legal coordination services"/>
-                            <i class="fa fa-gavel"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-attestation.png" alt="Document attestation services"/>
                             <h3>Legal Coordination</h3>
                             <p>Contracts, notary, court documentation, translation, and attestation coordination.</p>
                             <a class="alt-learn-more" href="/services/document-attestation">Learn More</a>
@@ -49,8 +45,7 @@
                     </div>
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/real-estate-investment">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-real-estate.jpg" alt="Real estate and investment services"/>
-                            <i class="fa fa-home"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-real-estate.png" alt="Real estate investment consultation"/>
                             <h3>Real Estate and Investment</h3>
                             <p>Property sales, leasing, investment planning, mortgage documentation, and UAE market guidance.</p>
                             <a class="alt-learn-more" href="/services/real-estate-investment">Learn More</a>
@@ -58,8 +53,7 @@
                     </div>
                     <div class="col-md-4">
                         <article class="alt-service-card" data-url="/services/business-advisory">
-                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/card-corporate.jpg" alt="Business advisory services"/>
-                            <i class="fa fa-line-chart"></i>
+                            <img class="alt-service-image" src="/altamkeen_website/static/src/img/photo-corporate-advisory.png" alt="Corporate strategy and business advisory"/>
                             <h3>Business Advisory</h3>
                             <p>Compliance, renewals, market entry, growth planning, and long-term operational guidance.</p>
                             <a class="alt-learn-more" href="/services/business-advisory">Learn More</a>

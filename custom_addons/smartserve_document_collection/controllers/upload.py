@@ -30,7 +30,6 @@ class SmartServeDocumentUploadController(http.Controller):
             })
 
         if request.httprequest.method == 'POST':
-            document_request._log_activity('upload_started', _('Customer started upload submission.'))
             result = self._save_uploaded_files(document_request)
             if result['errors']:
                 self._log_attempt(document_request, token, 'validation_error', '; '.join(result['errors']))
@@ -39,11 +38,7 @@ class SmartServeDocumentUploadController(http.Controller):
                     'error': '; '.join(result['errors']),
                 })
             if result['uploaded_count']:
-                document_request.write({'state': 'submitted'})
-                document_request._log_activity(
-                    'upload_completed',
-                    _('%s file(s) uploaded through secure link.') % result['uploaded_count'],
-                )
+                document_request._recalculate_upload_workflow()
                 self._log_attempt(document_request, token, 'success', 'Files uploaded successfully.')
                 return request.render('smartserve_document_collection.upload_success_page', {
                     'document_request': document_request,
@@ -57,6 +52,7 @@ class SmartServeDocumentUploadController(http.Controller):
             })
 
         self._log_attempt(document_request, token, 'view', 'Upload page viewed.')
+        document_request._log_activity('upload_link_opened', _('Secure upload link opened.'))
         return request.render('smartserve_document_collection.upload_page', {
             'document_request': document_request,
             'error': False,
@@ -82,6 +78,7 @@ class SmartServeDocumentUploadController(http.Controller):
                 size = file_storage.stream.tell()
                 file_storage.stream.seek(0)
                 try:
+                    was_replacement = requirement.review_status == 'replacement_required'
                     stored_file = storage_provider.upload_file(
                         document_request,
                         requirement,
@@ -109,7 +106,16 @@ class SmartServeDocumentUploadController(http.Controller):
                     'review_status': 'pending',
                     'sharepoint_file_id': stored_file.file_id,
                     'sharepoint_file_url': stored_file.url,
+                    'uploaded_at': fields.Datetime.now(),
+                    'rejection_reason': False,
+                    'reviewer_id': False,
+                    'review_date': False,
                 })
+                document_request._log_activity(
+                    'replacement_uploaded' if was_replacement else 'document_uploaded',
+                    (_('Replacement uploaded: %s') if was_replacement else _('Document uploaded: %s')) % requirement.name,
+                    related_document=requirement,
+                )
                 uploaded_count += 1
 
         return {'uploaded_count': uploaded_count, 'errors': errors}
@@ -181,8 +187,8 @@ class SmartServeDocumentUploadController(http.Controller):
             return _('This upload link has not been activated yet. Staff must click Generate Request first.')
         if document_request.state == 'rejected':
             return _('This request has been rejected and is no longer accepting uploads.')
-        if document_request.upload_revoked or document_request.state in ('completed', 'revoked'):
+        if document_request.upload_revoked or document_request.state in ('completed', 'cancelled', 'expired'):
             return _('This upload request is no longer available.')
-        if not document_request.allow_multiple_uploads and document_request.state != 'waiting':
+        if not document_request.allow_multiple_uploads and document_request.upload_status != 'not_uploaded':
             return _('This upload link has already been used.')
         return _('This upload link is not available.')

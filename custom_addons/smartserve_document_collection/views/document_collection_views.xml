@@ -11,117 +11,101 @@
         <field name="name">smartserve.customer.list</field>
         <field name="model">smartserve.customer</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-                <field name="company"/>
-                <field name="mobile"/>
-                <field name="email"/>
-                <field name="request_count"/>
-            </list>
+            <list><field name="name"/><field name="company"/><field name="mobile"/><field name="email"/><field name="request_count"/></list>
         </field>
     </record>
-
     <record id="view_smartserve_customer_form" model="ir.ui.view">
         <field name="name">smartserve.customer.form</field>
         <field name="model">smartserve.customer</field>
         <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <div class="oe_title"><h1><field name="name"/></h1></div>
-                    <group>
-                        <group>
-                            <field name="company"/>
-                            <field name="mobile"/>
-                            <field name="email"/>
-                        </group>
-                        <group>
-                            <field name="emirates_id"/>
-                            <field name="passport"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page string="Notes"><field name="notes"/></page>
-                        <page string="Requests"><field name="request_ids" readonly="1"/></page>
-                    </notebook>
-                </sheet>
-            </form>
+            <form><sheet>
+                <div class="oe_title"><h1><field name="name"/></h1></div>
+                <group><group><field name="company"/><field name="mobile"/><field name="email"/></group><group><field name="emirates_id"/><field name="passport"/></group></group>
+                <notebook><page string="Notes"><field name="notes"/></page><page string="Requests"><field name="request_ids" readonly="1"/></page></notebook>
+            </sheet></form>
         </field>
     </record>
-
     <record id="action_smartserve_customers" model="ir.actions.act_window">
-        <field name="name">Customers</field>
-        <field name="res_model">smartserve.customer</field>
-        <field name="view_mode">list,form</field>
+        <field name="name">Customers</field><field name="res_model">smartserve.customer</field><field name="view_mode">list,form</field>
     </record>
 
     <record id="view_smartserve_service_template_list" model="ir.ui.view">
-        <field name="name">smartserve.service.template.list</field>
-        <field name="model">smartserve.service.template</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-                <field name="due_days"/>
-                <field name="whatsapp_template"/>
-                <field name="active"/>
-            </list>
-        </field>
+        <field name="name">smartserve.service.template.list</field><field name="model">smartserve.service.template</field>
+        <field name="arch" type="xml"><list><field name="name"/><field name="due_days"/><field name="requires_authority_processing"/><field name="active"/></list></field>
     </record>
-
     <record id="view_smartserve_service_template_form" model="ir.ui.view">
-        <field name="name">smartserve.service.template.form</field>
-        <field name="model">smartserve.service.template</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <div class="oe_title"><h1><field name="name"/></h1></div>
-                    <group>
-                        <group>
-                            <field name="active"/>
-                            <field name="due_days"/>
-                            <field name="whatsapp_template"/>
-                        </group>
-                        <group>
-                            <field name="folder_naming_rule"/>
-                            <field name="upload_rule"/>
-                        </group>
-                    </group>
-                    <field name="document_template_ids">
-                        <list editable="bottom">
-                            <field name="sequence" widget="handle"/>
-                            <field name="name"/>
-                            <field name="description"/>
-                            <field name="required"/>
-                            <field name="allowed_extensions"/>
-                            <field name="max_size_mb"/>
-                        </list>
-                    </field>
-                </sheet>
-            </form>
-        </field>
+        <field name="name">smartserve.service.template.form</field><field name="model">smartserve.service.template</field>
+        <field name="arch" type="xml"><form><sheet>
+            <div class="oe_title"><h1><field name="name"/></h1></div>
+            <group><group><field name="active"/><field name="due_days"/><field name="requires_authority_processing"/><field name="whatsapp_template"/></group><group><field name="folder_naming_rule"/><field name="upload_rule"/></group></group>
+            <field name="document_template_ids"><list editable="bottom"><field name="sequence" widget="handle"/><field name="name"/><field name="description"/><field name="required"/><field name="allowed_extensions"/><field name="max_size_mb"/></list></field>
+        </sheet></form></field>
+    </record>
+    <record id="action_smartserve_service_templates" model="ir.actions.act_window">
+        <field name="name">Service Templates</field><field name="res_model">smartserve.service.template</field><field name="view_mode">list,form</field>
     </record>
 
-    <record id="action_smartserve_service_templates" model="ir.actions.act_window">
-        <field name="name">Service Templates</field>
-        <field name="res_model">smartserve.service.template</field>
-        <field name="view_mode">list,form</field>
+    <record id="view_smartserve_authority_list" model="ir.ui.view">
+        <field name="name">smartserve.authority.list</field><field name="model">smartserve.authority</field>
+        <field name="arch" type="xml"><list><field name="sequence" widget="handle"/><field name="name"/><field name="code"/><field name="authority_type"/><field name="active"/></list></field>
+    </record>
+    <record id="view_smartserve_authority_form" model="ir.ui.view">
+        <field name="name">smartserve.authority.form</field><field name="model">smartserve.authority</field>
+        <field name="arch" type="xml"><form><sheet><div class="oe_title"><h1><field name="name"/></h1></div><group><field name="code"/><field name="authority_type"/><field name="active"/><field name="notes"/></group></sheet></form></field>
+    </record>
+    <record id="action_smartserve_authorities" model="ir.actions.act_window">
+        <field name="name">Authorities</field><field name="res_model">smartserve.authority</field><field name="view_mode">list,form</field>
     </record>
 
     <record id="view_smartserve_document_request_list" model="ir.ui.view">
         <field name="name">smartserve.document.request.list</field>
         <field name="model">smartserve.document.request</field>
         <field name="arch" type="xml">
-            <list decoration-danger="state == 'rejected'" decoration-success="state == 'completed'" decoration-warning="state in ('waiting', 'submitted', 'review')">
+            <list decoration-danger="is_overdue or state in ('rejected', 'cancelled')" decoration-success="state == 'completed'" decoration-warning="state in ('document_review', 'additional_documents_required', 'action_required')">
+                <field name="priority" widget="priority"/>
                 <field name="name"/>
-                <field name="title"/>
                 <field name="customer_id"/>
                 <field name="service_name"/>
-                <field name="assigned_user_id"/>
+                <field name="state" widget="badge"/>
+                <field name="document_progress" string="Documents"/>
+                <field name="upload_progress" widget="progressbar" optional="show"/>
+                <field name="assigned_user_id" widget="many2one_avatar_user"/>
                 <field name="due_date"/>
-                <field name="state"/>
-                <field name="communication_status"/>
-                <field name="uploaded_count"/>
-                <field name="pending_count"/>
+                <field name="days_waiting" optional="show"/>
+                <field name="authority_id" optional="show"/>
+                <field name="external_reference" optional="show"/>
+                <field name="last_activity_date" optional="show"/>
+                <field name="is_overdue" column_invisible="True"/>
             </list>
+        </field>
+    </record>
+
+    <record id="view_smartserve_document_request_kanban" model="ir.ui.view">
+        <field name="name">smartserve.document.request.kanban</field>
+        <field name="model">smartserve.document.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="kanban_stage" records_draggable="false" quick_create="false">
+                <field name="name"/><field name="customer_id"/><field name="service_name"/><field name="state"/>
+                <field name="document_progress"/><field name="priority"/><field name="assigned_user_id"/>
+                <field name="due_date"/><field name="next_action"/><field name="authority_id"/><field name="is_overdue"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <strong><field name="name"/></strong><field name="priority" widget="priority"/>
+                        </div>
+                        <div class="fw-bold mb-1"><field name="customer_id"/></div>
+                        <div class="text-muted mb-2"><field name="service_name"/></div>
+                        <div class="mb-2"><field name="state" widget="badge"/></div>
+                        <div><i class="fa fa-file-text-o me-1" title="Documents"/><field name="document_progress"/></div>
+                        <div t-if="record.authority_id.raw_value"><i class="fa fa-building-o me-1" title="Authority"/><field name="authority_id"/></div>
+                        <div class="mt-2"><strong>Next:</strong> <field name="next_action"/></div>
+                        <div class="d-flex justify-content-between mt-2 pt-2 border-top">
+                            <field name="assigned_user_id" widget="many2one_avatar_user"/>
+                            <span t-att-class="record.is_overdue.raw_value ? 'text-danger fw-bold' : ''"><field name="due_date"/></span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
@@ -131,189 +115,259 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_generate_request" type="object" string="Generate Request" class="btn-primary" invisible="state in ('completed', 'revoked')"/>
-                    <button name="action_start_review" type="object" string="Start Review" invisible="state not in ('submitted', 'waiting')"/>
-                    <button name="action_request_more_documents" type="object" string="Request More Documents" invisible="state in ('draft', 'completed', 'revoked')"/>
-                    <button name="action_mark_completed" type="object" string="Complete" class="btn-success" invisible="state == 'completed'"/>
-                    <button name="action_mark_rejected" type="object" string="Reject" invisible="state == 'rejected'"/>
-                    <button name="action_revoke_upload_link" type="object" string="Revoke Link" invisible="upload_revoked"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting,submitted,review,completed"/>
+                    <button name="action_send_document_request" type="object" string="Send Document Request" class="btn-primary" invisible="state not in ('draft', 'expired', 'cancelled')"/>
+                    <button name="action_start_review" type="object" string="Start Review" class="btn-primary" invisible="state != 'documents_received'"/>
+                    <button name="action_request_more_documents" type="object" string="Request More Documents" invisible="state not in ('documents_partially_received', 'documents_received', 'document_review', 'action_required')"/>
+                    <button name="action_mark_documents_approved" type="object" string="Mark Documents Approved" class="btn-primary" invisible="state not in ('documents_received', 'document_review')"/>
+                    <button name="action_mark_ready_for_processing" type="object" string="Mark Ready for Processing" invisible="state != 'document_review'"/>
+                    <button name="action_submit_to_authority" type="object" string="Submit to Authority" class="btn-primary" invisible="state not in ('ready_for_processing', 'action_required')"/>
+                    <button name="action_mark_external_processing" type="object" string="Mark External Processing" invisible="state not in ('ready_for_processing', 'submitted_to_authority', 'action_required')"/>
+                    <button name="action_mark_action_required" type="object" string="Mark Action Required" invisible="state not in ('ready_for_processing', 'submitted_to_authority', 'external_processing', 'service_approved')"/>
+                    <button name="action_mark_service_approved" type="object" string="Mark Service Approved" class="btn-primary" invisible="state not in ('ready_for_processing', 'submitted_to_authority', 'external_processing', 'action_required')"/>
+                    <button name="action_mark_result_received" type="object" string="Mark Result Received" invisible="state != 'service_approved' or result_received_date"/>
+                    <button name="action_deliver_to_customer" type="object" string="Deliver to Customer" class="btn-primary" invisible="state != 'service_approved' or not result_received_date or delivered_to_customer"/>
+                    <button name="action_mark_completed" type="object" string="Complete Request" class="btn-success" invisible="state != 'service_approved' or not delivered_to_customer"/>
+                    <button name="action_put_on_hold" type="object" string="Put On Hold" invisible="state in ('completed', 'cancelled', 'rejected', 'expired', 'on_hold')"/>
+                    <button name="action_cancel_request" type="object" string="Cancel Request" confirm="Cancel this request?" invisible="state in ('completed', 'cancelled')"/>
+                    <button name="action_reopen_request" type="object" string="Reopen Request" invisible="state not in ('on_hold', 'cancelled', 'rejected', 'expired', 'completed')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_documents,documents_received,document_review,ready_for_processing,submitted_to_authority,external_processing,action_required,service_approved,completed" readonly="1"/>
                 </header>
                 <sheet>
-                    <div class="oe_title">
-                        <h1><field name="name" readonly="1"/></h1>
-                        <h2><field name="title" placeholder="Request Title"/></h2>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_start_review" icon="fa-file-text-o" invisible="state != 'documents_received'"><field name="pending_count" widget="statinfo" string="To Review"/></button>
                     </div>
+                    <div class="oe_title"><h1><field name="name" readonly="1"/></h1><h2><field name="title" placeholder="Request Title"/></h2></div>
                     <group>
-                        <group string="Customer">
-                            <field name="customer_id"/>
-                            <field name="customer_name" readonly="1"/>
-                            <field name="email" readonly="1"/>
-                            <field name="mobile" readonly="1"/>
+                        <group string="Request Information">
+                            <field name="customer_id"/><field name="template_id"/><field name="service_name"/>
+                            <field name="assigned_user_id" widget="many2one_avatar_user"/><field name="priority" widget="priority"/>
                         </group>
-                        <group string="Request">
-                            <field name="template_id"/>
-                            <field name="service_name"/>
-                            <field name="assigned_user_id"/>
-                            <field name="due_date"/>
+                        <group string="Current Stage">
+                            <field name="state" readonly="1"/><field name="next_action" readonly="1"/>
+                            <field name="request_date"/><field name="due_date"/><field name="days_waiting" readonly="1"/><field name="last_activity_date" readonly="1"/>
                         </group>
-                    </group>
-                    <group string="Secure Upload">
-                        <field name="upload_url" readonly="1"/>
-                        <field name="upload_expires_at"/>
-                        <field name="allow_multiple_uploads"/>
-                        <field name="upload_revoked" readonly="1"/>
-                    </group>
-                    <group string="SharePoint and Communication">
-                        <field name="sharepoint_folder_id" readonly="1"/>
-                        <field name="sharepoint_folder_url" readonly="1"/>
-                        <field name="communication_status" readonly="1"/>
                     </group>
                     <notebook>
-                        <page string="Required Documents">
-                            <field name="required_document_ids">
-                                <list editable="bottom">
-                                    <field name="sequence" widget="handle"/>
-                                    <field name="name"/>
-                                    <field name="description"/>
-                                    <field name="required"/>
-                                    <field name="allowed_extensions"/>
-                                    <field name="max_size_mb"/>
-                                    <field name="upload_status"/>
-                                    <field name="review_status"/>
-                                    <field name="sharepoint_file_id"/>
+                        <page string="Documents" name="documents">
+                            <group><group><field name="upload_status" readonly="1"/><field name="upload_progress" widget="progressbar" readonly="1"/></group><group><field name="required_count" readonly="1"/><field name="pending_count" readonly="1"/><field name="rejected_count" readonly="1"/></group></group>
+                            <field name="required_document_ids" context="{'default_request_id': id}">
+                                <list editable="bottom" decoration-danger="review_status in ('rejected', 'replacement_required')" decoration-success="review_status == 'approved'">
+                                    <field name="sequence" widget="handle"/><field name="name"/><field name="required"/>
+                                    <field name="upload_status" widget="badge"/><field name="review_status" widget="badge"/>
+                                    <field name="sharepoint_file_url" widget="url" optional="show"/><field name="uploaded_at" optional="show"/>
+                                    <field name="rejection_reason" optional="show"/><field name="internal_review_notes" optional="hide"/>
+                                    <field name="reviewer_id" optional="show"/><field name="review_date" optional="show"/>
+                                    <button name="action_approve" type="object" icon="fa-check" title="Approve" invisible="upload_status != 'uploaded' or review_status == 'approved'"/>
+                                    <button name="action_reject" type="object" icon="fa-times" title="Reject" invisible="upload_status != 'uploaded' or review_status == 'rejected'"/>
+                                    <button name="action_request_replacement" type="object" icon="fa-refresh" title="Request Replacement" invisible="upload_status != 'uploaded' or review_status == 'replacement_required'"/>
                                 </list>
+                                <form><sheet><group><group><field name="name"/><field name="description"/><field name="required"/><field name="allowed_extensions"/><field name="max_size_mb"/></group><group><field name="upload_status"/><field name="review_status"/><field name="uploaded_at" readonly="1"/><field name="sharepoint_file_url" widget="url"/></group></group><group string="Review"><field name="rejection_reason"/><field name="internal_review_notes"/><field name="reviewer_id" readonly="1"/><field name="review_date" readonly="1"/></group></sheet></form>
                             </field>
+                        </page>
+                        <page string="External Processing" name="external_processing">
+                            <group><group><field name="authority_id"/><field name="authority_type" readonly="1"/><field name="submission_date"/><field name="external_reference"/><field name="expected_completion_date"/></group><group><field name="external_status"/><field name="government_fee"/><field name="payment_status"/><field name="payment_reference"/></group></group>
+                            <group string="External Notes"><field name="external_notes"/></group>
+                        </page>
+                        <page string="Final Delivery" name="final_delivery">
+                            <group><group><field name="approval_date" readonly="1"/><field name="result_received_date" readonly="1"/><field name="final_result_url" widget="url"/><field name="result_storage_file_id"/></group><group><field name="delivered_to_customer" readonly="1"/><field name="final_delivery_date" readonly="1"/><field name="completed_date" readonly="1"/></group></group>
+                            <group string="Completion"><field name="completion_notes" placeholder="Required before completion"/><field name="completion_override" groups="smartserve_document_collection.group_smartserve_manager"/><field name="completion_override_reason" groups="smartserve_document_collection.group_smartserve_manager" invisible="not completion_override"/></group>
+                        </page>
+                        <page string="Secure Upload" name="secure_upload">
+                            <group><group><field name="upload_url" widget="url" readonly="1"/><field name="upload_expires_at"/><field name="allow_multiple_uploads"/><field name="upload_revoked" readonly="1"/></group><group><field name="sharepoint_folder_id" readonly="1"/><field name="sharepoint_folder_url" widget="url" readonly="1"/><field name="communication_status" readonly="1"/><button name="action_revoke_upload_link" type="object" string="Revoke Link" invisible="upload_revoked"/></group></group>
                         </page>
                         <page string="Uploaded Metadata">
-                            <field name="uploaded_document_ids" readonly="1">
-                                <list>
-                                    <field name="name"/>
-                                    <field name="required_document_id"/>
-                                    <field name="storage_provider"/>
-                                    <field name="storage_file_id"/>
-                                    <field name="storage_url"/>
-                                    <field name="mimetype"/>
-                                    <field name="file_size"/>
-                                    <field name="review_status"/>
-                                </list>
-                            </field>
+                            <field name="uploaded_document_ids" readonly="1"><list><field name="uploaded_at"/><field name="name"/><field name="required_document_id"/><field name="storage_provider"/><field name="storage_url" widget="url"/><field name="file_size"/><field name="review_status" widget="badge"/><field name="reviewer_id"/><field name="review_date"/></list></field>
                         </page>
                         <page string="Internal Notes"><field name="internal_notes"/></page>
-                        <page string="Activity Timeline">
-                            <field name="activity_ids" readonly="1">
-                                <list>
-                                    <field name="create_date"/>
-                                    <field name="activity_type"/>
-                                    <field name="summary"/>
-                                </list>
-                            </field>
+                        <page string="Timeline">
+                            <field name="timeline_event_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="event_date"/><field name="actor_id"/><field name="activity_type"/><field name="summary"/><field name="old_state"/><field name="new_state"/><field name="related_document_id"/><field name="notes"/></list></field>
                         </page>
                     </notebook>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
 
     <record id="view_smartserve_document_request_search" model="ir.ui.view">
-        <field name="name">smartserve.document.request.search</field>
-        <field name="model">smartserve.document.request</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="name"/>
-                <field name="title"/>
-                <field name="customer_id"/>
-                <field name="service_name"/>
-                <filter string="Pending Requests" name="pending" domain="[('state', 'in', ['draft', 'waiting'])]"/>
-                <filter string="Pending Review" name="review" domain="[('state', 'in', ['submitted', 'review'])]"/>
-                <filter string="Completed" name="completed" domain="[('state', '=', 'completed')]"/>
-                <filter string="Expiring Requests" name="expiring" domain="[('state', 'in', ['waiting', 'submitted', 'review'])]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
-                    <filter string="Assigned Staff" name="group_staff" context="{'group_by': 'assigned_user_id'}"/>
-                    <filter string="Service" name="group_service" context="{'group_by': 'service_name'}"/>
-                </group>
-            </search>
-        </field>
+        <field name="name">smartserve.document.request.search</field><field name="model">smartserve.document.request</field>
+        <field name="arch" type="xml"><search>
+            <field name="name"/><field name="title"/><field name="customer_id"/><field name="service_name"/><field name="assigned_user_id"/><field name="authority_id"/><field name="external_reference"/>
+            <separator/>
+            <filter string="My Requests" name="my_requests" domain="[('assigned_user_id', '=', uid)]"/>
+            <filter string="All Requests" name="all_requests" domain="[]"/>
+            <filter string="Unassigned Requests" name="unassigned" domain="[('assigned_user_id', '=', False)]"/>
+            <filter string="Waiting for Documents" name="waiting_documents" domain="[('state', 'in', ['waiting_documents', 'documents_partially_received'])]"/>
+            <filter string="Documents Received" name="documents_received" domain="[('state', '=', 'documents_received')]"/>
+            <filter string="Pending Review" name="pending_review" domain="[('state', '=', 'document_review')]"/>
+            <filter string="Additional Documents Required" name="additional_documents" domain="[('state', '=', 'additional_documents_required')]"/>
+            <filter string="Ready for Processing" name="ready" domain="[('state', '=', 'ready_for_processing')]"/>
+            <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted_to_authority')]"/>
+            <filter string="External Processing" name="external_processing" domain="[('state', '=', 'external_processing')]"/>
+            <filter string="Action Required" name="action_required" domain="[('state', '=', 'action_required')]"/>
+            <separator/>
+            <filter string="Due Today" name="due_today" domain="[('due_date', '=', context_today())]"/>
+            <filter string="Overdue" name="overdue" domain="[('due_date', '&lt;', context_today()), ('state', 'not in', ['completed', 'cancelled', 'rejected', 'expired'])]"/>
+            <filter string="High Priority" name="high_priority" domain="[('priority', 'in', ['2', '3'])]"/>
+            <filter string="Awaiting Customer" name="awaiting_customer" domain="[('state', 'in', ['waiting_documents', 'documents_partially_received', 'additional_documents_required'])]"/>
+            <filter string="Awaiting Authority" name="awaiting_authority" domain="[('state', 'in', ['submitted_to_authority', 'external_processing'])]"/>
+            <filter string="No Activity for 3 Days" name="inactive_3_days" domain="[('last_activity_date', '&lt;', (context_today() - relativedelta(days=3)).strftime('%Y-%m-%d'))]"/>
+            <filter string="Completed This Month" name="completed_month" domain="[('completed_date', '&gt;=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+            <filter string="Completed" name="completed" domain="[('state', '=', 'completed')]"/>
+            <filter string="Cancelled" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+            <group expand="0" string="Group By">
+                <filter string="Status" name="group_state" context="{'group_by': 'state'}"/><filter string="Operational Stage" name="group_stage" context="{'group_by': 'kanban_stage'}"/>
+                <filter string="Assigned User" name="group_staff" context="{'group_by': 'assigned_user_id'}"/><filter string="Service" name="group_service" context="{'group_by': 'service_name'}"/>
+                <filter string="Authority" name="group_authority" context="{'group_by': 'authority_id'}"/><filter string="Customer" name="group_customer" context="{'group_by': 'customer_id'}"/>
+                <filter string="Priority" name="group_priority" context="{'group_by': 'priority'}"/><filter string="Due Month" name="group_due_month" context="{'group_by': 'due_date:month'}"/>
+            </group>
+        </search></field>
     </record>
 
     <record id="action_smartserve_document_requests" model="ir.actions.act_window">
-        <field name="name">Requests</field>
-        <field name="res_model">smartserve.document.request</field>
-        <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="view_smartserve_document_request_search"/>
+        <field name="name">Requests</field><field name="res_model">smartserve.document.request</field><field name="view_mode">list,kanban,form</field><field name="search_view_id" ref="view_smartserve_document_request_search"/>
     </record>
-
     <record id="action_smartserve_pending_review" model="ir.actions.act_window">
-        <field name="name">Pending Review</field>
-        <field name="res_model">smartserve.document.request</field>
-        <field name="view_mode">list,form</field>
-        <field name="domain">[('state', 'in', ['submitted', 'review'])]</field>
+        <field name="name">Pending Review</field><field name="res_model">smartserve.document.request</field><field name="view_mode">list,kanban,form</field><field name="domain">[('state', 'in', ['documents_received', 'document_review'])]</field><field name="search_view_id" ref="view_smartserve_document_request_search"/>
     </record>
-
     <record id="action_smartserve_completed_requests" model="ir.actions.act_window">
-        <field name="name">Completed</field>
-        <field name="res_model">smartserve.document.request</field>
-        <field name="view_mode">list,form</field>
-        <field name="domain">[('state', '=', 'completed')]</field>
+        <field name="name">Completed</field><field name="res_model">smartserve.document.request</field><field name="view_mode">list,form</field><field name="domain">[('state', '=', 'completed')]</field>
     </record>
 
     <record id="view_smartserve_uploaded_document_list" model="ir.ui.view">
-        <field name="name">smartserve.uploaded.document.list</field>
-        <field name="model">smartserve.uploaded.document</field>
-        <field name="arch" type="xml">
-            <list decoration-danger="review_status == 'rejected'" decoration-success="review_status == 'approved'">
-                <field name="name"/>
-                <field name="request_id"/>
-                <field name="required_document_id"/>
-                <field name="storage_provider"/>
-                <field name="storage_file_id"/>
-                <field name="uploaded_at"/>
-                <field name="review_status"/>
-            </list>
-        </field>
+        <field name="name">smartserve.uploaded.document.list</field><field name="model">smartserve.uploaded.document</field>
+        <field name="arch" type="xml"><list decoration-danger="review_status in ('rejected', 'replacement_required')" decoration-success="review_status == 'approved'"><field name="uploaded_at"/><field name="name"/><field name="request_id"/><field name="required_document_id"/><field name="storage_provider"/><field name="storage_url" widget="url"/><field name="review_status" widget="badge"/><field name="reviewer_id"/><field name="review_date"/></list></field>
     </record>
-
     <record id="view_smartserve_uploaded_document_form" model="ir.ui.view">
-        <field name="name">smartserve.uploaded.document.form</field>
-        <field name="model">smartserve.uploaded.document</field>
-        <field name="arch" type="xml">
-            <form>
-                <header>
-                    <button name="action_approve" type="object" string="Approve" class="btn-primary" invisible="review_status == 'approved'"/>
-                    <button name="action_reject" type="object" string="Reject" invisible="review_status == 'rejected'"/>
-                    <field name="review_status" widget="statusbar"/>
-                </header>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="request_id"/>
-                        <field name="required_document_id"/>
-                        <field name="storage_provider"/>
-                        <field name="storage_file_id"/>
-                        <field name="storage_url"/>
-                        <field name="filename"/>
-                        <field name="mimetype"/>
-                        <field name="file_size"/>
-                    </group>
-                    <group string="Staff Notes"><field name="staff_notes"/></group>
-                </sheet>
-            </form>
-        </field>
+        <field name="name">smartserve.uploaded.document.form</field><field name="model">smartserve.uploaded.document</field>
+        <field name="arch" type="xml"><form><header><button name="action_approve" type="object" string="Approve" class="btn-primary" invisible="review_status == 'approved'"/><button name="action_reject" type="object" string="Reject" invisible="review_status == 'rejected'"/><button name="action_request_replacement" type="object" string="Request Replacement" invisible="review_status == 'replacement_required'"/><field name="review_status" widget="statusbar"/></header><sheet><group><group><field name="name"/><field name="request_id"/><field name="required_document_id"/><field name="filename"/><field name="mimetype"/><field name="file_size"/></group><group><field name="storage_provider"/><field name="storage_file_id"/><field name="storage_url" widget="url"/><field name="uploaded_at"/><field name="reviewer_id"/><field name="review_date"/></group></group><group string="Review"><field name="rejection_reason"/><field name="staff_notes"/></group></sheet></form></field>
+    </record>
+    <record id="action_smartserve_uploaded_documents" model="ir.actions.act_window">
+        <field name="name">Uploaded Documents</field><field name="res_model">smartserve.uploaded.document</field><field name="view_mode">list,form</field>
     </record>
 
-    <record id="action_smartserve_uploaded_documents" model="ir.actions.act_window">
-        <field name="name">Uploaded Documents</field>
-        <field name="res_model">smartserve.uploaded.document</field>
-        <field name="view_mode">list,form</field>
+    <record id="smartserve_workflow_dashboard_default" model="smartserve.workflow.dashboard"><field name="name">Operations Dashboard</field></record>
+    <record id="view_smartserve_workflow_dashboard_form" model="ir.ui.view">
+        <field name="name">smartserve.workflow.dashboard.form</field><field name="model">smartserve.workflow.dashboard</field>
+        <field name="arch" type="xml"><form create="false" edit="false" delete="false" class="o_smartserve_dashboard"><sheet>
+            <!-- Manager / Administrator dashboard -->
+            <div groups="smartserve_document_collection.group_smartserve_manager" class="ss_dashboard_scope">
+                <div class="ss_dashboard_header">
+                    <div><h1>Operations Dashboard</h1><p>Overview of service operations and workload</p></div>
+                    <button name="action_new_request" type="object" class="btn btn-primary"><i class="fa fa-plus me-2" title="Create"/>New Request</button>
+                </div>
+
+                <div class="ss_metric_grid ss_metric_grid_priority">
+                    <button name="action_open_review" type="object" class="ss_metric_card ss_tone_warning"><i class="fa fa-hourglass-half" title="Pending Review"/><span>Pending Review</span><field name="pending_review_count"/></button>
+                    <button name="action_open_action_required" type="object" class="ss_metric_card ss_tone_danger"><i class="fa fa-exclamation-triangle" title="Action Required"/><span>Action Required</span><field name="action_required_count"/></button>
+                    <button name="action_open_overdue" type="object" class="ss_metric_card ss_tone_danger"><i class="fa fa-clock-o" title="Overdue"/><span>Overdue Requests</span><field name="overdue_count"/></button>
+                    <button name="action_open_ready" type="object" class="ss_metric_card ss_tone_teal"><i class="fa fa-check-circle-o" title="Ready"/><span>Ready for Processing</span><field name="ready_processing_count"/></button>
+                    <button name="action_open_external" type="object" class="ss_metric_card ss_tone_blue"><i class="fa fa-globe" title="External Processing"/><span>External Processing</span><field name="external_processing_count"/></button>
+                </div>
+
+                <div class="ss_metric_grid ss_metric_grid_secondary">
+                    <button name="action_open_waiting" type="object" class="ss_metric_card ss_metric_compact"><span>Waiting for Documents</span><field name="waiting_documents_count"/></button>
+                    <button name="action_open_received" type="object" class="ss_metric_card ss_metric_compact"><span>Documents Received</span><field name="documents_received_count"/></button>
+                    <button name="action_open_partial" type="object" class="ss_metric_card ss_metric_compact ss_tone_teal"><span>Partially Received</span><field name="partially_received_count"/></button>
+                    <button name="action_open_additional" type="object" class="ss_metric_card ss_metric_compact ss_tone_warning"><span>Additional Documents</span><field name="additional_documents_count"/></button>
+                    <button name="action_open_submitted" type="object" class="ss_metric_card ss_metric_compact ss_tone_blue"><span>Submitted to Authority</span><field name="submitted_count"/></button>
+                    <button name="action_open_service_approved" type="object" class="ss_metric_card ss_metric_compact ss_tone_success"><span>Service Approved</span><field name="service_approved_count"/></button>
+                    <button name="action_open_completed_month" type="object" class="ss_metric_card ss_metric_compact ss_tone_success"><span>Completed This Month</span><field name="completed_month_count"/></button>
+                </div>
+
+                <section groups="smartserve_document_collection.group_smartserve_admin" class="ss_dashboard_panel">
+                    <header><div><h3>Team / Users</h3><span>User access overview</span></div>
+                        <button name="action_manage_users" type="object" class="btn btn-primary"><i class="fa fa-users me-2" title="Users"/>Manage Users</button>
+                    </header>
+                    <div class="ss_metric_grid ss_metric_grid_staff_summary">
+                        <button name="action_manage_users" type="object" class="ss_metric_card ss_metric_compact ss_tone_success"><span>Active Users</span><field name="active_users_count"/></button>
+                        <button name="action_manage_users" type="object" class="ss_metric_card ss_metric_compact ss_tone_warning"><span>Managers</span><field name="managers_count"/></button>
+                        <button name="action_manage_users" type="object" class="ss_metric_card ss_metric_compact ss_tone_blue"><span>Employees</span><field name="employees_count"/></button>
+                        <button name="action_manage_users" type="object" class="ss_metric_card ss_metric_compact ss_tone_danger"><span>Inactive Users</span><field name="inactive_users_count"/></button>
+                    </div>
+                </section>
+
+                <div class="ss_panel_grid ss_panel_grid_three">
+                    <section class="ss_dashboard_panel ss_span_two"><header><h3>Team Workload</h3><span>Active requests by priority and owner</span></header>
+                        <field name="team_request_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="assigned_user_id" widget="many2one_avatar_user"/><field name="name"/><field name="customer_id"/><field name="state" widget="badge"/><field name="next_action"/><field name="due_date"/><field name="priority" widget="priority"/></list></field>
+                    </section>
+                    <section class="ss_dashboard_panel"><header><h3>Integration / Communication</h3></header>
+                        <div class="ss_integration_stack">
+                            <button name="action_open_communications" type="object"><i class="fa fa-whatsapp text-success" title="Communication"/><span>Messages Queued / Sent</span><field name="communication_count"/></button>
+                            <button name="action_open_uploaded_documents" type="object"><i class="fa fa-files-o text-primary" title="Files"/><span>Stored Files</span><field name="stored_files_count"/></button>
+                            <button name="action_open_expired_links" type="object"><i class="fa fa-warning text-warning" title="Expired Links"/><span>Expired Links</span><field name="expired_links_count"/></button>
+                            <button name="action_open_unassigned" type="object"><i class="fa fa-users text-muted" title="Unassigned"/><span>Unassigned Requests</span><field name="unassigned_count"/></button>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="ss_panel_grid ss_panel_grid_three">
+                    <section class="ss_dashboard_panel"><header><h3>Overdue Requests</h3><button name="action_open_overdue" type="object" class="btn btn-link">View all</button></header>
+                        <field name="overdue_request_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="name"/><field name="customer_id"/><field name="service_name"/><field name="due_date"/><field name="days_waiting"/></list></field>
+                    </section>
+                    <section class="ss_dashboard_panel"><header><h3>Immediate Attention</h3><button name="action_open_action_required" type="object" class="btn btn-link">View all</button></header>
+                        <field name="attention_request_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="name"/><field name="customer_id"/><field name="state" widget="badge"/><field name="next_action"/><field name="priority" widget="priority"/></list></field>
+                    </section>
+                    <section class="ss_dashboard_panel"><header><h3>Recent Activity</h3></header>
+                        <field name="recent_event_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="event_date"/><field name="request_id"/><field name="summary"/><field name="actor_id"/></list></field>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Employee / Staff dashboard -->
+            <div groups="smartserve_document_collection.group_smartserve_staff,!smartserve_document_collection.group_smartserve_manager" class="ss_dashboard_scope">
+                <div class="ss_dashboard_header"><div><h1>My Dashboard</h1><p><field name="greeting"/>, <field name="user_name"/> 👋</p></div></div>
+
+                <div class="ss_staff_quick_actions">
+                    <button name="action_new_request" type="object" class="ss_quick_action ss_quick_blue"><i class="fa fa-plus" title="New"/><span><strong>New Request</strong><small>Create a new service request</small></span></button>
+                    <button name="action_open_my_review" type="object" class="ss_quick_action ss_quick_orange"><i class="fa fa-file-text-o" title="Review"/><span><strong>My Pending Review</strong><small>Review pending items</small></span></button>
+                    <button name="action_open_my_overdue" type="object" class="ss_quick_action ss_quick_red"><i class="fa fa-clock-o" title="Overdue"/><span><strong>My Overdue</strong><small>Items past due</small></span></button>
+                    <button name="action_open_my_ready" type="object" class="ss_quick_action ss_quick_green"><i class="fa fa-user-o" title="Ready"/><span><strong>Ready to Submit</strong><small>Ready for authority submission</small></span></button>
+                </div>
+
+                <div class="ss_metric_grid ss_metric_grid_staff">
+                    <button name="action_open_my_review" type="object" class="ss_metric_card ss_metric_compact ss_tone_warning"><span>My Pending Review</span><field name="my_pending_review_count"/></button>
+                    <button name="action_open_my_action" type="object" class="ss_metric_card ss_metric_compact ss_tone_danger"><span>My Action Required</span><field name="my_action_required_count"/></button>
+                    <button name="action_open_my_overdue" type="object" class="ss_metric_card ss_metric_compact ss_tone_danger"><span>My Overdue</span><field name="my_overdue_count"/></button>
+                    <button name="action_open_my_ready" type="object" class="ss_metric_card ss_metric_compact ss_tone_blue"><span>Ready to Submit</span><field name="my_ready_count"/></button>
+                    <button name="action_open_my_customer" type="object" class="ss_metric_card ss_metric_compact ss_tone_teal"><span>Awaiting Customer</span><field name="my_awaiting_customer_count"/></button>
+                    <button name="action_open_my_authority" type="object" class="ss_metric_card ss_metric_compact ss_tone_blue"><span>External Follow-up</span><field name="my_awaiting_authority_count"/></button>
+                </div>
+
+                <section class="ss_dashboard_panel ss_tasks_panel"><header><h3>My Tasks / Action Center</h3><button name="action_open_my_active" type="object" class="btn btn-link">View all tasks</button></header>
+                    <field name="action_request_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="priority" widget="priority"/><field name="name" string="Request Number"/><field name="customer_id"/><field name="service_name"/><field name="state" widget="badge"/><field name="next_action"/><field name="due_date"/><field name="last_activity_date"/></list></field>
+                </section>
+
+                <div class="ss_metric_grid ss_metric_grid_staff_summary">
+                    <button name="action_open_my_active" type="object" class="ss_metric_card ss_metric_compact"><span>My Active Requests</span><field name="my_active_count"/></button>
+                    <button name="action_open_my_completed" type="object" class="ss_metric_card ss_metric_compact ss_tone_success"><span>Completed This Month</span><field name="my_completed_month_count"/></button>
+                    <button name="action_open_my_customer" type="object" class="ss_metric_card ss_metric_compact ss_tone_teal"><span>Awaiting Customer</span><field name="my_awaiting_customer_count"/></button>
+                    <button name="action_open_my_authority" type="object" class="ss_metric_card ss_metric_compact ss_tone-blue"><span>Awaiting Authority</span><field name="my_awaiting_authority_count"/></button>
+                </div>
+
+                <div class="ss_panel_grid ss_panel_grid_two">
+                    <section class="ss_dashboard_panel"><header><h3>Upcoming Deadlines</h3></header>
+                        <field name="upcoming_request_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="name"/><field name="customer_id"/><field name="due_date"/><field name="priority" widget="priority"/></list></field>
+                    </section>
+                    <section class="ss_dashboard_panel"><header><h3>Recent Customer Uploads</h3></header>
+                        <field name="recent_upload_ids" readonly="1"><list create="false" edit="false" delete="false"><field name="request_id"/><field name="required_document_id"/><field name="filename"/><field name="uploaded_at"/></list></field>
+                    </section>
+                </div>
+            </div>
+        </sheet></form></field>
+    </record>
+    <record id="action_smartserve_workflow_dashboard" model="ir.actions.act_window">
+        <field name="name">Operations Dashboard</field><field name="res_model">smartserve.workflow.dashboard</field><field name="view_mode">form</field><field name="res_id" ref="smartserve_workflow_dashboard_default"/><field name="target">current</field>
     </record>
 
     <menuitem id="menu_smartserve_document_collection_root" name="SmartServe" sequence="20" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_document_dashboard" name="Dashboard" parent="menu_smartserve_document_collection_root" action="action_smartserve_document_requests" sequence="10" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_customers" name="Customers" parent="menu_smartserve_document_collection_root" action="action_smartserve_customers" sequence="20" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_service_templates" name="Service Templates" parent="menu_smartserve_document_collection_root" action="action_smartserve_service_templates" sequence="30" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_document_requests" name="Requests" parent="menu_smartserve_document_collection_root" action="action_smartserve_document_requests" sequence="40" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_pending_review" name="Pending Review" parent="menu_smartserve_document_collection_root" action="action_smartserve_pending_review" sequence="50" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_uploaded_documents" name="Uploaded Documents" parent="menu_smartserve_document_collection_root" action="action_smartserve_uploaded_documents" sequence="60" groups="smartserve_document_collection.group_smartserve_staff"/>
-    <menuitem id="menu_smartserve_completed_requests" name="Completed" parent="menu_smartserve_document_collection_root" action="action_smartserve_completed_requests" sequence="70" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_document_dashboard" name="Dashboard" parent="menu_smartserve_document_collection_root" action="action_smartserve_workflow_dashboard" sequence="10" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_document_requests" name="Requests" parent="menu_smartserve_document_collection_root" action="action_smartserve_document_requests" sequence="20" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_pending_review" name="Pending Review" parent="menu_smartserve_document_collection_root" action="action_smartserve_pending_review" sequence="30" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_uploaded_documents" name="Uploaded Documents" parent="menu_smartserve_document_collection_root" action="action_smartserve_uploaded_documents" sequence="40" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_completed_requests" name="Completed" parent="menu_smartserve_document_collection_root" action="action_smartserve_completed_requests" sequence="50" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_customers" name="Customers" parent="menu_smartserve_document_collection_root" action="action_smartserve_customers" sequence="60" groups="smartserve_document_collection.group_smartserve_staff"/>
+    <menuitem id="menu_smartserve_configuration" name="Configuration" parent="menu_smartserve_document_collection_root" sequence="90" groups="smartserve_document_collection.group_smartserve_manager"/>
+    <menuitem id="menu_smartserve_service_templates" name="Service Templates" parent="menu_smartserve_configuration" action="action_smartserve_service_templates" sequence="10" groups="smartserve_document_collection.group_smartserve_manager"/>
+    <menuitem id="menu_smartserve_authorities" name="Authorities" parent="menu_smartserve_configuration" action="action_smartserve_authorities" sequence="20" groups="smartserve_document_collection.group_smartserve_manager"/>
 </odoo>

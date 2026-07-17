@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_smartserve_users_list" model="ir.ui.view">
+        <field name="name">smartserve.users.list</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <list string="SmartServe Users" decoration-muted="not active">
+                <field name="name" string="Full Name"/>
+                <field name="login" string="Email / Login"/>
+                <field name="mobile" optional="show"/>
+                <field name="smartserve_role" widget="badge"
+                       decoration-danger="smartserve_role == 'administrator'"
+                       decoration-warning="smartserve_role == 'manager'"
+                       decoration-info="smartserve_role == 'employee'"/>
+                <field name="smartserve_team_id"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="smartserve_assigned_request_count" string="Assigned Requests"/>
+                <field name="login_date" string="Last Login" optional="show"/>
+                <button name="action_smartserve_assigned_requests" type="object" icon="fa-folder-open"
+                        title="View Assigned Requests"/>
+                <button name="action_smartserve_send_invitation" type="object" icon="fa-envelope"
+                        title="Send Invitation / Reset Password" invisible="not active"/>
+                <button name="action_smartserve_deactivate" type="object" icon="fa-ban"
+                        title="Deactivate" invisible="not active" confirm="Deactivate this user and block access immediately?"/>
+                <button name="action_smartserve_reactivate" type="object" icon="fa-check-circle"
+                        title="Reactivate" invisible="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_smartserve_users_form" model="ir.ui.view">
+        <field name="name">smartserve.users.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="SmartServe User">
+                <header>
+                    <button name="action_smartserve_send_invitation" type="object"
+                            string="Send Invitation / Reset Password" class="btn-primary" invisible="not id or not active"
+                            title="Emails the user a secure link to set or reset their password."/>
+                    <button name="action_smartserve_assigned_requests" type="object"
+                            string="View Assigned Requests" invisible="not id"/>
+                    <button name="action_smartserve_deactivate" type="object" string="Deactivate"
+                            invisible="not id or not active" confirm="Deactivate this user and block access immediately?"/>
+                    <button name="action_smartserve_reactivate" type="object" string="Reactivate"
+                            invisible="not id or active"/>
+                    <field name="active" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Fatima Noor"/></h1>
+                    </div>
+                    <group>
+                        <group string="Contact &amp; Access">
+                            <field name="login" string="Email / Login" placeholder="name@company.com"
+                                   title="The email or login used to sign in to SmartServe."/>
+                            <field name="email"/>
+                            <field name="mobile"/>
+                            <field name="login_date" string="Last Login" readonly="1"/>
+                        </group>
+                        <group string="Role &amp; Team">
+                            <field name="smartserve_role" widget="badge" required="1"
+                                   title="The primary business role controls the user's normal scope."/>
+                            <field name="smartserve_team_id"/>
+                            <field name="smartserve_assigned_request_count" readonly="1"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Optional Permissions" col="2">
+                        <field name="smartserve_can_create_customers"/>
+                        <field name="smartserve_can_create_requests"/>
+                        <field name="smartserve_can_edit_templates"/>
+                        <field name="smartserve_can_reassign_requests"/>
+                        <field name="smartserve_can_view_all_requests"
+                               title="Allows this user to see requests beyond the normal employee or team scope."/>
+                        <field name="smartserve_can_complete_requests"/>
+                        <field name="smartserve_can_export_data"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_smartserve_users_search" model="ir.ui.view">
+        <field name="name">smartserve.users.search</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <search string="SmartServe Users">
+                <field name="name"/>
+                <field name="login"/>
+                <field name="smartserve_team_id"/>
+                <filter name="active_users" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="inactive_users" string="Inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter name="administrators" string="Administrators" domain="[('smartserve_role', '=', 'administrator')]"/>
+                <filter name="managers" string="Managers" domain="[('smartserve_role', '=', 'manager')]"/>
+                <filter name="employees" string="Employees" domain="[('smartserve_role', '=', 'employee')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_role" string="Role" context="{'group_by': 'smartserve_role'}"/>
+                    <filter name="group_team" string="Team" context="{'group_by': 'smartserve_team_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_smartserve_users" model="ir.actions.act_window">
+        <field name="name">Users</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_smartserve_users_list"/>
+        <field name="search_view_id" ref="view_smartserve_users_search"/>
+        <field name="domain">[('smartserve_role', '!=', False)]</field>
+        <field name="context">{'active_test': False, 'default_smartserve_role': 'employee', 'default_active': True}</field>
+        <field name="help" type="html"><p class="o_view_nocontent_smiling_face">Add User</p><p>Create an employee, choose a role and optionally adjust the seven simple permissions.</p></field>
+    </record>
+
+    <record id="view_smartserve_role_profile_list" model="ir.ui.view">
+        <field name="name">smartserve.role.profile.list</field>
+        <field name="model">smartserve.role.profile</field>
+        <field name="arch" type="xml">
+            <list string="Roles &amp; Permissions" create="false" delete="false">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="role_code" widget="badge"/>
+                <field name="can_create_customers"/>
+                <field name="can_create_requests"/>
+                <field name="can_edit_templates"/>
+                <field name="can_reassign_requests"/>
+                <field name="can_view_all_requests"/>
+                <field name="can_complete_requests"/>
+                <field name="can_export_data"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_smartserve_role_profile_form" model="ir.ui.view">
+        <field name="name">smartserve.role.profile.form</field>
+        <field name="model">smartserve.role.profile</field>
+        <field name="arch" type="xml">
+            <form string="Role &amp; Permissions" create="false" delete="false">
+                <sheet>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <group><field name="role_code" widget="badge"/><field name="description"/></group>
+                    <group string="Default Permissions" col="2">
+                        <field name="can_create_customers"/><field name="can_create_requests"/>
+                        <field name="can_edit_templates"/><field name="can_reassign_requests"/>
+                        <field name="can_view_all_requests"/><field name="can_complete_requests"/>
+                        <field name="can_export_data"/>
+                    </group>
+                    <div class="alert alert-info" role="alert">These defaults are applied when a user is assigned this role. Individual exceptions are managed on the user.</div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_smartserve_role_profiles" model="ir.actions.act_window">
+        <field name="name">Roles &amp; Permissions</field>
+        <field name="res_model">smartserve.role.profile</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_smartserve_team_list" model="ir.ui.view">
+        <field name="name">smartserve.team.list</field><field name="model">smartserve.team</field>
+        <field name="arch" type="xml"><list><field name="name"/><field name="manager_id" widget="many2one_avatar_user"/><field name="member_count"/><field name="active" widget="boolean_toggle"/></list></field>
+    </record>
+    <record id="view_smartserve_team_form" model="ir.ui.view">
+        <field name="name">smartserve.team.form</field><field name="model">smartserve.team</field>
+        <field name="arch" type="xml"><form><sheet><div class="oe_title"><h1><field name="name" placeholder="e.g. Business Setup Team"/></h1></div><group><field name="manager_id"/><field name="active"/><field name="notes"/></group><field name="member_ids"><list><field name="name"/><field name="login"/><field name="smartserve_role" widget="badge"/><field name="active"/></list></field></sheet></form></field>
+    </record>
+    <record id="action_smartserve_teams" model="ir.actions.act_window">
+        <field name="name">Teams</field><field name="res_model">smartserve.team</field><field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_smartserve_user_audit_list" model="ir.ui.view">
+        <field name="name">smartserve.user.audit.list</field><field name="model">smartserve.user.audit</field>
+        <field name="arch" type="xml"><list create="false" edit="false" delete="false"><field name="event_date"/><field name="actor_id"/><field name="user_id"/><field name="event_type" widget="badge"/><field name="description"/></list></field>
+    </record>
+    <record id="action_smartserve_user_audit" model="ir.actions.act_window">
+        <field name="name">Activity Log</field><field name="res_model">smartserve.user.audit</field><field name="view_mode">list</field>
+    </record>
+
+    <record id="view_smartserve_system_settings_form" model="ir.ui.view">
+        <field name="name">smartserve.system.settings.form</field><field name="model">res.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="SmartServe System Settings">
+                <sheet><h1>System Settings</h1><p class="text-muted">Simple operational defaults. Technical Odoo settings are intentionally hidden.</p>
+                    <group string="Documents &amp; Communication">
+                        <field name="smartserve_default_upload_expiry_days"/>
+                        <field name="smartserve_storage_provider" title="Configured storage adapter name, such as local or SharePoint."/>
+                        <field name="smartserve_communication_provider" title="Configured messaging adapter name."/>
+                    </group>
+                </sheet>
+                <footer><button string="Save" type="object" name="execute" class="btn-primary"/><button string="Discard" special="cancel"/></footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_smartserve_system_settings" model="ir.actions.act_window">
+        <field name="name">System Settings</field><field name="res_model">res.config.settings</field><field name="view_mode">form</field><field name="view_id" ref="view_smartserve_system_settings_form"/><field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_smartserve_administration" name="Administration"
+              parent="menu_smartserve_document_collection_root" sequence="100"
+              groups="smartserve_document_collection.group_smartserve_admin"/>
+    <menuitem id="menu_smartserve_users" name="Users" parent="menu_smartserve_administration"
+              action="action_smartserve_users" sequence="10" groups="smartserve_document_collection.group_smartserve_admin"/>
+    <menuitem id="menu_smartserve_roles" name="Roles &amp; Permissions" parent="menu_smartserve_administration"
+              action="action_smartserve_role_profiles" sequence="20" groups="smartserve_document_collection.group_smartserve_admin"/>
+    <menuitem id="menu_smartserve_teams" name="Teams" parent="menu_smartserve_administration"
+              action="action_smartserve_teams" sequence="30" groups="smartserve_document_collection.group_smartserve_admin"/>
+    <menuitem id="menu_smartserve_activity_log" name="Activity Log" parent="menu_smartserve_administration"
+              action="action_smartserve_user_audit" sequence="40" groups="smartserve_document_collection.group_smartserve_admin"/>
+    <menuitem id="menu_smartserve_system_settings" name="System Settings" parent="menu_smartserve_administration"
+              action="action_smartserve_system_settings" sequence="50" groups="smartserve_document_collection.group_smartserve_admin"/>
+</odoo>
