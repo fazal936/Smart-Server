@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /contact-submit.php
-
-Sitemap: https://altamkeen.ae/sitemap.xml
