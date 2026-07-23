@@ -14,7 +14,7 @@ Customers do not have accounts, logins, dashboards, profiles, or settings.
 
 ## Staff
 
-- Logs into Odoo
+- Logs into Laravel
 - Creates a customer document request
 - Enters customer details, requested service, required documents, due date, and internal notes
 - Generates a random secure upload link
@@ -85,7 +85,7 @@ Complete Request
 - Customer Portal
 - Customer Login
 - Customer Dashboard
-- Customer Document Management Dashboard
+- Custo mer Document Management Dashboard
 - Client Self-Service Portal
 - CRM-style customer interface
 
@@ -93,7 +93,7 @@ Complete Request
 
 ## System
 
-Odoo Staff Backend
+Laravel Staff Backend
 
 ->
 

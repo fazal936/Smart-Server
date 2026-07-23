@@ -11,7 +11,7 @@
 - Notes
 - Multiple Requests
 
-Customers do not log in and are not Odoo portal users.
+Customers do not log in and are not Laravel portal users.
 
 ---
 
