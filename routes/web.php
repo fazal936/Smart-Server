@@ -17,4 +17,8 @@ Route::livewire('/service-templates', 'service-templates.index')
     ->middleware(['auth', 'verified', 'active', 'admin'])
     ->name('service-templates.index');
 
+Route::livewire('/document-requests', 'document-requests.index')
+    ->middleware(['auth', 'verified', 'active'])
+    ->name('document-requests.index');
+
 require __DIR__.'/settings.php';
