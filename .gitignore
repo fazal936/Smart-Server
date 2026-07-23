@@ -34,3 +34,15 @@ data/odoo/
 # Windows
 # ===========================
 Thumbs.db
+# Environment and secrets
+.env
+.env.*
+!.env.example
+docker/.env
+
+# Private SmartServe data
+/storage/app/private/*
+/storage/app/uploads/*
+/backups/
+*.sql
+*.dump
