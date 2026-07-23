@@ -26,6 +26,12 @@ new class extends Component
 
     public bool $showCreateForm = false;
 
+    public ?int $editingStaffId = null;
+
+    public string $editRole = 'employee';
+
+    public bool $editIsActive = true;
+
     public function updatedSearch(): void
     {
         $this->resetPage();
@@ -63,16 +69,7 @@ new class extends Component
             'email_verified_at' => now(),
         ]);
 
-        $this->reset([
-            'name',
-            'email',
-            'password',
-            'password_confirmation',
-        ]);
-
-        $this->role = 'employee';
-        $this->is_active = true;
-        $this->showCreateForm = false;
+        $this->resetCreateForm();
 
         session()->flash('status', 'Staff account created successfully.');
 
@@ -80,6 +77,11 @@ new class extends Component
     }
 
     public function cancelCreate(): void
+    {
+        $this->resetCreateForm();
+    }
+
+    private function resetCreateForm(): void
     {
         $this->resetValidation();
 
@@ -93,6 +95,60 @@ new class extends Component
         $this->role = 'employee';
         $this->is_active = true;
         $this->showCreateForm = false;
+    }
+
+    public function startEdit(int $staffId): void
+    {
+        $staff = User::findOrFail($staffId);
+
+        $this->editingStaffId = $staff->id;
+        $this->editRole = $staff->role;
+        $this->editIsActive = (bool) $staff->is_active;
+
+        $this->resetValidation();
+    }
+
+    public function cancelEdit(): void
+    {
+        $this->editingStaffId = null;
+        $this->editRole = 'employee';
+        $this->editIsActive = true;
+
+        $this->resetValidation();
+    }
+
+    public function saveEdit(): void
+    {
+        $validated = $this->validate([
+            'editRole' => [
+                'required',
+                'in:admin,manager,employee,reviewer,finance',
+            ],
+            'editIsActive' => ['boolean'],
+        ]);
+
+        $staff = User::findOrFail($this->editingStaffId);
+
+        if (
+            $staff->is(auth()->user())
+            && $validated['editIsActive'] === false
+        ) {
+            $this->addError(
+                'editIsActive',
+                'You cannot deactivate your own account.'
+            );
+
+            return;
+        }
+
+        $staff->update([
+            'role' => $validated['editRole'],
+            'is_active' => $validated['editIsActive'],
+        ]);
+
+        $this->cancelEdit();
+
+        session()->flash('status', 'Staff account updated successfully.');
     }
 
     public function with(): array
@@ -277,13 +333,7 @@ new class extends Component
                         wire:loading.attr="disabled"
                         wire:target="createStaff"
                     >
-                        <span wire:loading.remove wire:target="createStaff">
-                            Create Account
-                        </span>
-
-                        <span wire:loading wire:target="createStaff">
-                            Creating...
-                        </span>
+                        Create Account
                     </button>
                 </div>
             </form>
@@ -308,30 +358,113 @@ new class extends Component
                         <th class="px-4 py-3 text-left text-sm font-semibold">Email</th>
                         <th class="px-4 py-3 text-left text-sm font-semibold">Role</th>
                         <th class="px-4 py-3 text-left text-sm font-semibold">Status</th>
+                        <th class="px-4 py-3 text-right text-sm font-semibold">Action</th>
                     </tr>
                 </thead>
 
                 <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800">
                     @forelse ($staffMembers as $staff)
-                        <tr>
-                            <td class="px-4 py-3">{{ $staff->name }}</td>
-                            <td class="px-4 py-3">{{ $staff->email }}</td>
-                            <td class="px-4 py-3 capitalize">{{ $staff->role }}</td>
+                        <tr wire:key="staff-{{ $staff->id }}">
                             <td class="px-4 py-3">
-                                @if ($staff->is_active)
-                                    <span class="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
-                                        Active
-                                    </span>
-                                @else
-                                    <span class="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-                                        Inactive
+                                {{ $staff->name }}
+
+                                @if ($staff->is(auth()->user()))
+                                    <span class="ml-1 text-xs text-zinc-500">
+                                        (You)
                                     </span>
                                 @endif
                             </td>
+
+                            <td class="px-4 py-3">
+                                {{ $staff->email }}
+                            </td>
+
+                            @if ($editingStaffId === $staff->id)
+                                <td class="px-4 py-3">
+                                    <select
+                                        wire:model="editRole"
+                                        class="rounded-lg border border-zinc-300 px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950"
+                                    >
+                                        <option value="employee">Employee</option>
+                                        <option value="manager">Manager</option>
+                                        <option value="reviewer">Reviewer</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+
+                                    @error('editRole')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    <label class="flex items-center gap-2">
+                                        <input
+                                            type="checkbox"
+                                            wire:model="editIsActive"
+                                            class="rounded border-zinc-300"
+                                        >
+
+                                        <span class="text-sm">
+                                            Active
+                                        </span>
+                                    </label>
+
+                                    @error('editIsActive')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </td>
+
+                                <td class="px-4 py-3 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <button
+                                            type="button"
+                                            wire:click="cancelEdit"
+                                            class="rounded-lg border border-zinc-300 px-3 py-2 text-sm hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                                        >
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            wire:click="saveEdit"
+                                            class="rounded-lg bg-zinc-900 px-3 py-2 text-sm text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900"
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </td>
+                            @else
+                                <td class="px-4 py-3 capitalize">
+                                    {{ $staff->role }}
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    @if ($staff->is_active)
+                                        <span class="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+                                            Active
+                                        </span>
+                                    @else
+                                        <span class="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+                                            Inactive
+                                        </span>
+                                    @endif
+                                </td>
+
+                                <td class="px-4 py-3 text-right">
+                                    <button
+                                        type="button"
+                                        wire:click="startEdit({{ $staff->id }})"
+                                        class="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                                    >
+                                        Edit
+                                    </button>
+                                </td>
+                            @endif
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-4 py-8 text-center text-zinc-500">
+                            <td colspan="5" class="px-4 py-8 text-center text-zinc-500">
                                 No staff members found.
                             </td>
                         </tr>
