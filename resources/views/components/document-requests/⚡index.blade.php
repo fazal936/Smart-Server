@@ -53,6 +53,9 @@ new class extends Component
 
     public function mount(): void
     {
+        /*
+         * Assign the current user by default when creating a request.
+         */
         $this->assigned_to = (string) auth()->id();
     }
 
@@ -75,6 +78,10 @@ new class extends Component
         $this->resetPage();
     }
 
+    /*
+     * When staff selects a service, copy its defaults and document
+     * checklist into the request form.
+     */
     public function updatedServiceTemplateId(string $value): void
     {
         $this->resetValidation([
@@ -136,6 +143,11 @@ new class extends Component
             $this->due_date = '';
         }
 
+        /*
+         * Copy the template documents into editable request rows.
+         * Later changes to the service template will not alter an
+         * already-created request.
+         */
         $this->documents = $serviceTemplate
             ->requiredDocuments
             ->map(fn ($document) => [
@@ -341,6 +353,11 @@ new class extends Component
         $this->persistRequest(true);
     }
 
+    /*
+     * Create the request, its copied checklist, activity record and
+     * optional secure upload link inside one database transaction.
+     * If any operation fails, Laravel rolls back the entire process.
+     */
     private function persistRequest(bool $prepareUploadLink): void
     {
         $validated = $this->validate();
@@ -383,8 +400,8 @@ new class extends Component
                     'created_by' => auth()->id(),
 
                     /*
-                     * The request remains a draft until the communication
-                     * is actually sent or the link is copied.
+                     * Preparing a link does not mean it has already
+                     * been sent to the customer.
                      */
                     'status' => 'draft',
 
@@ -469,6 +486,9 @@ new class extends Component
                     ]);
                 }
 
+                /*
+                 * Store an audit trail entry for the request creation.
+                 */
                 $documentRequest->activities()->create([
                     'actor_id' => auth()->id(),
                     'actor_type' => 'staff',
@@ -480,6 +500,10 @@ new class extends Component
                 ]);
 
                 if ($prepareUploadLink) {
+                    /*
+                     * The customer receives the random raw token.
+                     * Public lookup will use its SHA-256 hash.
+                     */
                     $rawToken = Str::random(64);
 
                     $uploadLink = $documentRequest
@@ -517,6 +541,10 @@ new class extends Component
                             $validated['customer_mobile'],
                     };
 
+                    /*
+                     * Communication remains prepared until WhatsApp,
+                     * email or copy-link action is actually completed.
+                     */
                     $documentRequest
                         ->communications()
                         ->create([
@@ -634,6 +662,9 @@ new class extends Component
         ];
     }
 
+    /*
+     * Generate a readable but unique request reference.
+     */
     private function generateRequestNumber(): string
     {
         do {
@@ -657,6 +688,10 @@ new class extends Component
     {
         $currentUser = auth()->user();
 
+        /*
+         * Admins, managers and reviewers can see all requests.
+         * Employees only see requests assigned to or created by them.
+         */
         $canViewAllRequests = in_array(
             $currentUser->role,
             [
@@ -1463,9 +1498,20 @@ new class extends Component
                     @forelse ($requests as $documentRequest)
                         <tr wire:key="document-request-{{ $documentRequest->id }}">
                             <td class="px-4 py-3">
-                                <div class="font-medium">
+                                {{--
+                                    The request number opens the complete
+                                    request workspace using route-model binding.
+                                --}}
+                                <a
+                                    href="{{ route(
+                                        'document-requests.show',
+                                        $documentRequest
+                                    ) }}"
+                                    wire:navigate
+                                    class="font-medium text-blue-600 hover:text-blue-800 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
+                                >
                                     {{ $documentRequest->request_number }}
-                                </div>
+                                </a>
 
                                 <div class="mt-1 text-xs text-zinc-500">
                                     {{ $documentRequest->items_count }}
@@ -1508,7 +1554,8 @@ new class extends Component
                             </td>
 
                             <td class="px-4 py-3">
-                                {{ $documentRequest->assignedUser?->name ?? 'Unassigned' }}
+                                {{ $documentRequest->assignedUser?->name
+                                    ?? 'Unassigned' }}
                             </td>
 
                             <td class="px-4 py-3">
@@ -1522,7 +1569,9 @@ new class extends Component
                                                 ! $documentRequest->isOverdue(),
                                         ])
                                     >
-                                        {{ $documentRequest->due_date->format('d M Y') }}
+                                        {{ $documentRequest->due_date->format(
+                                            'd M Y'
+                                        ) }}
                                     </span>
                                 @else
                                     —
